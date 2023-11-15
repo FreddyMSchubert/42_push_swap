@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:57:48 by fschuber         ###   ########.fr       */
+/*   Created: 2023/11/15 11:02:06 by fschuber          #+#    #+#             */
+/*   Updated: 2023/11/15 11:04:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
-int	main(int argc, char **argv)
+int	check_correctly_sorted(t_stacks	*stacks)
 {
-	t_stacks	stacks;
+	int	i;
 
-	if (argc < 3)
-		return (ft_printf("Please input at least 2 numbers to sort!\n"), 0);
-	if (init_stacks(argv, &stacks) == 0)
-		return (0);
-	print_stacks(&stacks);
-	bubble_sort(&stacks);
-	ft_printf("That took %d operations.\n", stacks.operations);
+	i = 1;
+	while (i < stacks->height)
+	{
+		if (stacks->a[i].value < stacks->a[i - 1].value)
+			return (0);
+		i++;
+	}
 	return (1);
 }

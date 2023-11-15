@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:34:48 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 10:05:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:57:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	pa(t_stacks	*stacks)
 	print_colored("pa\n", 'y');
 	if (stacks->b[0].slot_filled == 1)
 	{
+		stacks->operations++;
 		if (stacks->a[0].slot_filled == 1)
 			ft_printf("There was an item in [0] of a. Overwriting in pa!\n");
 		stacks->a[0].value = stacks->b[0].value;
@@ -32,6 +33,7 @@ void	pb(t_stacks	*stacks)
 	print_colored("pb\n", 'y');
 	if (stacks->a[0].slot_filled == 1)
 	{
+		stacks->operations++;
 		if (stacks->b[0].slot_filled == 1)
 			ft_printf("There was an item in [0] of b. Overwriting in pb!\n");
 		stacks->b[0].value = stacks->a[0].value;

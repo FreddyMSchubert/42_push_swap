@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 09:04:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:06:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	if (!a || !b)
 		return (free(a), free(b), 0);
 	stacks->height = height;
+	stacks->operations = 0;
 	counter = 0;
 	while (counter < stacks->height)
 	{

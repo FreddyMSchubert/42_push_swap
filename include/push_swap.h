@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 09:57:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:05:51 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ typedef struct s_stack_item {
 	@param **a			Stack a. (length = height) (Pointer array)
 	@param **b			Stack b. (length = height) (Pointer array)
 	@param height		Height of both stacks. Stacks will always be same height
+	@param operations	gets iterated for every operation. determines efficiency
 */
 typedef struct s_stacks {
 	t_stack_item	*a;
 	t_stack_item	*b;
 	int				height;
+	int				operations;
 }				t_stacks;
 
 // ----- FILES
@@ -66,3 +68,11 @@ void		rrr(t_stacks	*stacks);
 
 int			ft_arraylen(const void **array);
 void		print_colored(const char *str, char color);
+
+// --- Sorting algos
+
+void		bubble_sort(t_stacks	*stacks);
+
+// Utils
+
+int			check_correctly_sorted(t_stacks	*stacks);

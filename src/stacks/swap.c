@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:06:53 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 10:09:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:08:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	sa(t_stacks	*stacks)
 {
 	int		temp;
 
+	stacks->operations++;
 	print_colored("sa\n", 'r');
 	if (stacks->a[0].slot_filled && stacks->a[1].slot_filled)
 	{
@@ -33,6 +34,7 @@ void	sb(t_stacks	*stacks)
 {
 	int		temp;
 
+	stacks->operations++;
 	print_colored("sb\n", 'r');
 	if (stacks->b[0].slot_filled && stacks->b[1].slot_filled)
 	{
@@ -46,6 +48,7 @@ void	sb(t_stacks	*stacks)
 
 void	ss(t_stacks	*stacks)
 {
+	stacks->operations--;
 	print_colored("ss\n", 'r');
 	sa(stacks);
 	sb(stacks);

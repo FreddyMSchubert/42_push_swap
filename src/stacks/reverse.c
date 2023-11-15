@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:35:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 09:59:53 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:08:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	rra(t_stacks	*stacks)
 	int		temp_fill;
 	int		i;
 
+	stacks->operations++;
 	print_colored("rra\n", 'g');
 	i = stacks->height - 2;
 	temp_val = stacks->a[stacks->height - 1].value;
@@ -38,6 +39,7 @@ void	rrb(t_stacks	*stacks)
 	int		temp_fill;
 	int		i;
 
+	stacks->operations++;
 	print_colored("rrb\n", 'g');
 	i = stacks->height - 2;
 	temp_val = stacks->b[stacks->height - 1].value;
@@ -55,6 +57,7 @@ void	rrb(t_stacks	*stacks)
 void	rrr(t_stacks	*stacks)
 {
 	print_colored("rrr\n", 'g');
+	stacks->operations--;
 	rra(stacks);
 	rrb(stacks);
 }
