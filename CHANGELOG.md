@@ -1,4 +1,15 @@
-### push_swap by @fschuber Changelog
+# push_swap by @fschuber Changelog
 
-v0.0.0
+### todo
+- check whether number input is valid in init
+
+### v0.0.1
+- Added README.md with subject
+- Added ft_printf + libft submodules & header file
+- Added Makefile
+- Added stacks & stack_item structs for easy data handling
+- Added init_stacks() for initialization, print_stacks() for data checking and free_stacks() for save deletion
+- Added a function for every operation specified by the subject.
+
+### v0.0.0
 - Project intialization & repo setup

@@ -1,0 +1,34 @@
+NAME = ../bin/push_swap
+
+SRC = $(shell find ../src -name "*.c")
+OBJ = $(SRC:.c=.o)
+
+CFLAGS		:= -Wall -Werror -Wextra -Wunreachable-code -Ofast
+HEADER		:= -I../include/
+LIBS		:=	-L../submodules/42_ft_printf/ -lftprintf \
+				-L../submodules/42_libft/ -lft
+
+$(NAME): $(OBJ)
+	@cc $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
+%.o: %.c
+	@cc -c $< $(CFLAGS) $(HEADER) -o $@
+
+all: $(NAME)
+clean:
+	@rm -f $(OBJ)
+fclean: clean
+	@rm -f $(NAME)
+re: fclean all
+fcomp:
+	@cd ../include && norminette
+	@cd ../src && norminette
+	@make fclean
+	@make all
+	@make clean
+	@clear
+comp:
+	@make all
+	@make clean
+	@clear
+
+.PHONY: all clean fclean re comp
