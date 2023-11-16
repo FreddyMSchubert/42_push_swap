@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:35:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 07:10:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:37:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ra(t_stacks	*stacks, int print_stack)
 	i--;
 	stacks->a[i].slot_filled = temp_fill;
 	stacks->a[i].value = temp_val;
+	turn_on_gravity(stacks);
 	if (VERBOSE == 1 && print_stack == 1)
 		print_stacks(stacks);
 }
@@ -56,6 +57,7 @@ void	rb(t_stacks	*stacks, int print_stack)
 	i--;
 	stacks->b[i].slot_filled = temp_fill;
 	stacks->b[i].value = temp_val;
+	turn_on_gravity(stacks);
 	if (VERBOSE == 1 && print_stack == 1)
 		print_stacks(stacks);
 }

@@ -6,13 +6,42 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 06:50:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 10:40:19 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* This file is here to initializie stacks and free them again. */
+/* This file is here to initialize stacks and free them again. */
 
 #include "../../include/push_swap.h"
+
+static void	*normal_bubble_sort(t_stacks	*stacks)
+{
+	int				counter;
+	t_stack_item	*sorted;
+	int				temp;
+
+	counter = -1;
+	sorted = malloc(sizeof(t_stack_item) * stacks->height);
+	if (!sorted)
+		return (NULL);
+	while (++counter < stacks->height)
+		sorted[counter].value = stacks->a[counter].value;
+	counter = 0;
+	while (check_correctly_sorted(sorted, stacks->height) == 0)
+	{
+		if (sorted[counter].value > sorted[counter + 1].value)
+		{
+			temp = sorted[counter].value;
+			sorted[counter].value = sorted[counter + 1].value;
+			sorted[counter + 1].value = temp;
+		}
+		counter++;
+		if (counter > stacks->height - 2)
+			counter = 0;
+	}
+	stacks->sorted = sorted;
+	return (NULL);
+}
 
 // @brief		Turns a string array in input format into desired stacks format
 // @param[in]	argv string array in input format, e.g. ./push_swap 2 1 3 6 5 8
@@ -43,6 +72,7 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	}
 	stacks->a = a;
 	stacks->b = b;
+	normal_bubble_sort(stacks);
 	return (1);
 }
 
@@ -65,7 +95,8 @@ void	print_stacks(const t_stacks	*stacks)
 		counter++;
 	}
 	if (VERBOSE == 1)
-		ft_printf("  a    b - Height: %d\n", stacks->height);
+		ft_printf("  a    b - H: %d, #: %d\n", stacks->height, \
+												stacks->operations);
 }
 
 // @brief	Frees everything allocated inside t_stacks

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 07:25:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 10:30:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // ----- SETTINGS
 
-#define VERBOSE 0
+#define VERBOSE 1		// will output detailed logging if set to 1
 
 // ----- STRUCTS
 
@@ -39,6 +39,7 @@ typedef struct s_stack_item {
 typedef struct s_stacks {
 	t_stack_item	*a;
 	t_stack_item	*b;
+	t_stack_item	*sorted;
 	int				height;
 	int				operations;
 }				t_stacks;
@@ -71,13 +72,15 @@ void		rrr(t_stacks	*stacks);
 // Utils
 
 int			ft_arraylen(const void **array);
+int			ft_tile_arraylen(t_stack_item	*array);
 void		print_colored(const char *str, char color);
 void		turn_on_gravity(t_stacks	*stacks);
 
 // --- Sorting algos
 
 void		bubble_sort(t_stacks	*stacks);
+void		insertion_sort(t_stacks	*stacks);
 
 // Utils
 
-int			check_correctly_sorted(t_stacks	*stacks);
+int			check_correctly_sorted(t_stack_item	*stack, int height);
