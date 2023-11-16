@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:06:53 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:08:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 07:12:09 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "../../include/push_swap.h"
 
-void	sa(t_stacks	*stacks)
+void	sa(t_stacks	*stacks, int print_stack)
 {
 	int		temp;
 
@@ -25,12 +25,14 @@ void	sa(t_stacks	*stacks)
 		temp = stacks->a[0].value;
 		stacks->a[0].value = stacks->a[1].value;
 		stacks->a[1].value = temp;
+		if (VERBOSE == 1 && print_stack == 1)
+			print_stacks(stacks);
 	}
-	else
+	else if (VERBOSE == 1)
 		ft_printf("There was one or no elements to swap. Doing nothing.\n");
 }
 
-void	sb(t_stacks	*stacks)
+void	sb(t_stacks	*stacks, int print_stack)
 {
 	int		temp;
 
@@ -41,8 +43,10 @@ void	sb(t_stacks	*stacks)
 		temp = stacks->b[0].value;
 		stacks->b[0].value = stacks->b[1].value;
 		stacks->b[1].value = temp;
+		if (VERBOSE == 1 && print_stack == 1)
+			print_stacks(stacks);
 	}
-	else
+	else if (VERBOSE == 1)
 		ft_printf("There was one or no elements to swap. Doing nothing.\n");
 }
 
@@ -50,6 +54,8 @@ void	ss(t_stacks	*stacks)
 {
 	stacks->operations--;
 	print_colored("ss\n", 'r');
-	sa(stacks);
-	sb(stacks);
+	sa(stacks, 0);
+	sb(stacks, 0);
+	if (VERBOSE == 1)
+		print_stacks(stacks);
 }

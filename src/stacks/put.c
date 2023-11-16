@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:34:48 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:57:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 07:07:55 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,56 @@
 
 void	pa(t_stacks	*stacks)
 {
+	int		counter;
+
 	print_colored("pa\n", 'y');
 	if (stacks->b[0].slot_filled == 1)
 	{
 		stacks->operations++;
 		if (stacks->a[0].slot_filled == 1)
-			ft_printf("There was an item in [0] of a. Overwriting in pa!\n");
+		{
+			counter = stacks->height - 2;
+			while (counter >= 0)
+			{
+				stacks->a[counter + 1].value = stacks->a[counter].value;
+				stacks->a[counter + 1].slot_filled = \
+						stacks->a[counter].slot_filled;
+				counter--;
+			}
+		}
 		stacks->a[0].value = stacks->b[0].value;
 		stacks->a[0].slot_filled = 1;
 		stacks->b[0].slot_filled = 0;
+		turn_on_gravity(stacks);
 	}
-	else
-		ft_printf("First slot of b was empty. Doing nothing.\n");
+	if (VERBOSE == 1)
+		print_stacks(stacks);
 }
 
 void	pb(t_stacks	*stacks)
 {
+	int		counter;
+
 	print_colored("pb\n", 'y');
 	if (stacks->a[0].slot_filled == 1)
 	{
 		stacks->operations++;
 		if (stacks->b[0].slot_filled == 1)
-			ft_printf("There was an item in [0] of b. Overwriting in pb!\n");
+		{
+			counter = stacks->height - 2;
+			while (counter >= 0)
+			{
+				stacks->b[counter + 1].value = stacks->b[counter].value;
+				stacks->b[counter + 1].slot_filled = \
+						stacks->b[counter].slot_filled;
+				counter--;
+			}
+		}
 		stacks->b[0].value = stacks->a[0].value;
 		stacks->b[0].slot_filled = 1;
 		stacks->a[0].slot_filled = 0;
+		turn_on_gravity(stacks);
 	}
-	else
-		ft_printf("First slot of a was empty. Doing nothing.\n");
+	if (VERBOSE == 1)
+		print_stacks(stacks);
 }

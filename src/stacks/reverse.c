@@ -6,13 +6,13 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:35:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:08:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 07:08:55 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	rra(t_stacks	*stacks)
+void	rra(t_stacks	*stacks, int print_stack)
 {
 	int		temp_val;
 	int		temp_fill;
@@ -31,9 +31,11 @@ void	rra(t_stacks	*stacks)
 	}
 	stacks->a[0].slot_filled = temp_fill;
 	stacks->a[0].value = temp_val;
+	if (VERBOSE == 1 && print_stack == 1)
+		print_stacks(stacks);
 }
 
-void	rrb(t_stacks	*stacks)
+void	rrb(t_stacks	*stacks, int print_stack)
 {
 	int		temp_val;
 	int		temp_fill;
@@ -52,12 +54,16 @@ void	rrb(t_stacks	*stacks)
 	}
 	stacks->b[0].slot_filled = temp_fill;
 	stacks->b[0].value = temp_val;
+	if (VERBOSE == 1 && print_stack == 1)
+		print_stacks(stacks);
 }
 
 void	rrr(t_stacks	*stacks)
 {
 	print_colored("rrr\n", 'g');
 	stacks->operations--;
-	rra(stacks);
-	rrb(stacks);
+	rra(stacks, 0);
+	rrb(stacks, 0);
+	if (VERBOSE == 1)
+		print_stacks(stacks);
 }

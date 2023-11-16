@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:05:51 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 07:25:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #include "../submodules/42_ft_printf/ft_printf.h"
 #include "../submodules/42_libft/libft.h"
+
+// ----- SETTINGS
+
+#define VERBOSE 0
 
 // ----- STRUCTS
 
@@ -49,25 +53,26 @@ void		free_stacks(t_stacks	*stacks);
 
 // Functions
 
-void		sa(t_stacks	*stacks);
-void		sb(t_stacks	*stacks);
+void		sa(t_stacks	*stacks, int print_stack);
+void		sb(t_stacks	*stacks, int print_stack);
 void		ss(t_stacks	*stacks);
 
 void		pa(t_stacks	*stacks);
 void		pb(t_stacks	*stacks);
 
-void		ra(t_stacks	*stacks);
-void		rb(t_stacks	*stacks);
+void		ra(t_stacks	*stacks, int print_stack);
+void		rb(t_stacks	*stacks, int print_stack);
 void		rr(t_stacks	*stacks);
 
-void		rra(t_stacks	*stacks);
-void		rrb(t_stacks	*stacks);
+void		rra(t_stacks	*stacks, int print_stack);
+void		rrb(t_stacks	*stacks, int print_stack);
 void		rrr(t_stacks	*stacks);
 
 // Utils
 
 int			ft_arraylen(const void **array);
 void		print_colored(const char *str, char color);
+void		turn_on_gravity(t_stacks	*stacks);
 
 // --- Sorting algos
 

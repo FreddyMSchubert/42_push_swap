@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/15 11:06:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/16 06:50:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	print_stacks(const t_stacks	*stacks)
 	int		counter;
 
 	counter = 0;
-	while (counter < stacks->height)
+	while (counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
 			ft_printf(" [%d] ", stacks->a[counter]);
@@ -64,8 +64,8 @@ void	print_stacks(const t_stacks	*stacks)
 			ft_printf(" [ ] \n");
 		counter++;
 	}
-	ft_printf("  -    - \n  a    b \n");
-	ft_printf("Height: %d\n", stacks->height);
+	if (VERBOSE == 1)
+		ft_printf("  a    b - Height: %d\n", stacks->height);
 }
 
 // @brief	Frees everything allocated inside t_stacks
@@ -73,5 +73,6 @@ void	free_stacks(t_stacks	*stacks)
 {
 	free(stacks->a);
 	free(stacks->b);
-	ft_printf("Freed stacks!");
+	if (VERBOSE == 1)
+		ft_printf("Freed stacks!");
 }
