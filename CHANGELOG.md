@@ -3,6 +3,9 @@
 ### todo
 - check whether number input is valid in init
 
+### v0.0.5 - work in progress branch - 16.11.23
+- started figuring out problems in insertion, marked by comments. not fixed yet but on the way there.
+
 ### v0.0.4 - 16.11.23
 - made check_correctly_sorted accept any array of type t_stack_item, so it doesnt just run through a
 - made the program save the correctly sorted array as one of the struct parameters.
