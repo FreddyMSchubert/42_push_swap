@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 10:40:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:14:56 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "../../include/push_swap.h"
 
+// normal bubble sort without special operations
+// used to create "sorted" stack at start of program
 static void	*normal_bubble_sort(t_stacks	*stacks)
 {
 	int				counter;
@@ -89,13 +91,14 @@ void	print_stacks(const t_stacks	*stacks)
 		else
 			ft_printf(" [ ] ");
 		if (stacks->b[counter].slot_filled == 1)
-			ft_printf(" [%d] \n", stacks->b[counter]);
+			ft_printf(" [%d] ", stacks->b[counter]);
 		else
-			ft_printf(" [ ] \n");
+			ft_printf(" [ ] ");
+		ft_printf(" [%d] \n", stacks->sorted[counter]);
 		counter++;
 	}
 	if (VERBOSE == 1)
-		ft_printf("  a    b - H: %d, #: %d\n", stacks->height, \
+		ft_printf("  a    b    s  - H: %d, #: %d\n", stacks->height, \
 												stacks->operations);
 }
 

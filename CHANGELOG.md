@@ -3,6 +3,14 @@
 ### todo
 - check whether number input is valid in init
 
+### v0.0.6 - 17.11.23
+- Added build/run_push_swap.sh. It executes push_swap bin with random numbers in unsigned int range, amount of numbers is specified by first parameter.
+- Added check to main whether output was correctly sorted, will probably be helpful for long inputs. (Also, I basically just did the bonus.)
+- fixed insertion sort issues. Its not very efficient, but thats just because its insertion sort. will merge branches!
+
+### v0.0.5 - work in progress branch - 16.11.23
+- started figuring out problems in insertion, marked by comments. not fixed yet but on the way there.
+
 ### v0.0.4 - 16.11.23
 - made check_correctly_sorted accept any array of type t_stack_item, so it doesnt just run through a
 - made the program save the correctly sorted array as one of the struct parameters.

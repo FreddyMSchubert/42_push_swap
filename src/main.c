@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 09:31:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:21:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ int	main(int argc, char **argv)
 	insertion_sort(&stacks);
 	print_stacks(&stacks);
 	if (VERBOSE == 1)
-		ft_printf("That took %d operations.\n", stacks.operations);
+	{
+		if (check_correctly_sorted(stacks.a, stacks.height) == 1)
+			ft_printf("\033[0;32mInput was correctly sorted in %d operations! \
+						Yaay!\033[0m\n", stacks.operations);
+		else
+			ft_printf("\033[0;31mThat was not correctly sorted. \
+						It took %d operations. \033[0m\n", stacks.operations);
+	}
 	return (1);
 }
