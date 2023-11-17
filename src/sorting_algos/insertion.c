@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 07:33:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:23:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:44:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	find_index_to_rotate_to(t_stacks	*stacks)
 		find_index_by_value(stacks->sorted, stacks->a[0].value, stacks->height);
 	while (find_index_by_value(stacks->b, \
 			stacks->sorted[selected_index_in_sorted].value, \
-			ft_tile_arraylen(stacks->b)) == -1)
+									stacks->b_height) == -1)
 	{
 		selected_index_in_sorted--;
 		if (selected_index_in_sorted < 0)
@@ -48,7 +48,7 @@ static int	find_index_to_rotate_to(t_stacks	*stacks)
 	}
 	return (find_index_by_value(stacks->b, \
 						stacks->sorted[selected_index_in_sorted].value, \
-						ft_tile_arraylen(stacks->b)));
+						stacks->b_height));
 }
 
 // @brief	rotates b so when pb is executed, the pushed element is sorted.
@@ -67,8 +67,7 @@ static void	rotate_b_to_perfectly_receive_slot(t_stacks	*stacks)
 	nbr_to_be_top = stacks->b[index_to_be_top];
 	while (stacks->b[0].value != nbr_to_be_top.value)
 	{
-		if (index_to_be_top - 0 < ft_tile_arraylen(stacks->b) \
-							- index_to_be_top + 1)
+		if (index_to_be_top - 0 < stacks->b_height - index_to_be_top + 1)
 			rb(stacks, 1);
 		else
 			rrb(stacks, 1);

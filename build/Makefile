@@ -3,7 +3,8 @@ NAME = ../bin/push_swap
 SRC = $(shell find ../src -name "*.c")
 OBJ = $(SRC:.c=.o)
 
-CFLAGS		:= -Wall -Werror -Wextra -Wunreachable-code -Ofast
+CFLAGS		:= -Wall -Werror -Wextra \
+				-Wunreachable-code -Ofast -g -fsanitize=address
 HEADER		:= -I../include/
 LIBS		:=	-L../submodules/42_ft_printf/ -lftprintf \
 				-L../submodules/42_libft/ -lft
@@ -22,8 +23,7 @@ re: fclean all
 fcomp:
 	@cd ../include && norminette
 	@cd ../src && norminette
-	@make fclean
-	@make all
+	@make re
 	@make clean
 	@clear
 comp:

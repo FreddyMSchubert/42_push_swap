@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:12:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:37:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_stacks {
 	t_stack_item	*a;
 	t_stack_item	*b;
 	t_stack_item	*sorted;
+	int				a_height;
+	int				b_height;
 	int				height;
 	int				operations;
 }				t_stacks;

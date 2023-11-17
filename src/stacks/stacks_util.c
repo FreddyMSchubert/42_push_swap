@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 09:28:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:37:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@ int	ft_arraylen(const void **array)
 
 	count = 0;
 	while (array[count] != NULL)
-		count++;
-	return (count);
-}
-
-// @brief	Counts elements in a slot_filled-terminated array of stack item type
-int	ft_tile_arraylen(t_stack_item	*array)
-{
-	int		count;
-
-	count = 0;
-	while (array[count].slot_filled == 1)
 		count++;
 	return (count);
 }

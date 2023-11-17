@@ -3,10 +3,20 @@
 ### todo
 - check whether number input is valid in init
 
+---
+
+### v0.0.7 - 17.11.23
+- added fsanitize & fixed some issues it pointed to. now issue free!
+	- freed stacks at end of program
+	- removed ft_tile_arraylen to instead keep track of array lengths within struct. changed everything that reference that function & made sure to keep heights updated
+- fixed previously unnoticed problem in bubblesort. the random numbers sh file is great at finding bugs! lead to way less code & slight performance improvement, for 9 8 7 6 5 4 3 2 1 0, it went from 117 to 107
+
 ### v0.0.6 - 17.11.23
-- Added build/run_push_swap.sh. It executes push_swap bin with random numbers in unsigned int range, amount of numbers is specified by first parameter.
+- Added build/run_push_swap.sh. It executes push_swap bin with random numbers in signed int range, amount of numbers is specified by first parameter.
 - Added check to main whether output was correctly sorted, will probably be helpful for long inputs. (Also, I basically just did the bonus.)
 - fixed insertion sort issues. Its not very efficient, but thats just because its insertion sort. will merge branches!
+
+---
 
 ### v0.0.5 - work in progress branch - 16.11.23
 - started figuring out problems in insertion, marked by comments. not fixed yet but on the way there.
@@ -23,6 +33,8 @@
 - pa + pb were invalid - stacks should have 'gravity', there shouldn't be empty spaces inside. Fixed.
 - a VERBOSE macro now defines whether the output expected in the subject is printed (0) or a bunch of messages and logging helpful to understand the workings are printed (1)
 - reworked bubble sort. its better now!
+
+---
 
 ### v0.0.2 - 15.11.23
 - Added Bubble sort to start working with subject operations

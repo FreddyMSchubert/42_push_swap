@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:14:56 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:41:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 {
 	t_stack_item	*a;
 	t_stack_item	*b;
-	int				counter;
 	int				height;
 
 	height = ft_arraylen((const void **)argv) - 1;
@@ -63,14 +62,15 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 		return (free(a), free(b), 0);
 	stacks->height = height;
 	stacks->operations = 0;
-	counter = 0;
-	while (counter < stacks->height)
+	stacks->a_height = 0;
+	stacks->b_height = 0;
+	while (stacks->a_height < stacks->height)
 	{
-		a[counter].value = ft_atoi(argv[counter + 1]);
-		a[counter].slot_filled = 1;
-		b[counter].value = 0;
-		b[counter].slot_filled = 0;
-		counter++;
+		a[stacks->a_height].value = ft_atoi(argv[stacks->a_height + 1]);
+		a[stacks->a_height].slot_filled = 1;
+		b[stacks->a_height].value = 0;
+		b[stacks->a_height].slot_filled = 0;
+		stacks->a_height++;
 	}
 	stacks->a = a;
 	stacks->b = b;
@@ -98,8 +98,8 @@ void	print_stacks(const t_stacks	*stacks)
 		counter++;
 	}
 	if (VERBOSE == 1)
-		ft_printf("  a    b    s  - H: %d, #: %d\n", stacks->height, \
-												stacks->operations);
+		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
+								stacks->b_height, stacks->operations);
 }
 
 // @brief	Frees everything allocated inside t_stacks
