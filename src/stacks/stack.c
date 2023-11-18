@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 07:38:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:00:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	return (1);
 }
 
+#include <stdio.h>
+
 // @brief	Prints out all the data in a stacks struct
 void	print_stacks(const t_stacks	*stacks)
 {
@@ -87,18 +89,18 @@ void	print_stacks(const t_stacks	*stacks)
 	while (counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
-			ft_printf(" [%d] ", stacks->a[counter]);
+			fprintf(stderr, " [%+010d] \t", stacks->a[counter].value);
 		else
-			ft_printf(" [ ] ");
+			fprintf(stderr, " \t \t");
 		if (stacks->b[counter].slot_filled == 1)
-			ft_printf(" [%d] ", stacks->b[counter]);
+			fprintf(stderr, " [%+010d] \t", stacks->b[counter].value);
 		else
-			ft_printf(" [ ] ");
-		ft_printf(" [%d] \n", stacks->sorted[counter]);
+			fprintf(stderr, " \t \t");
+		fprintf(stderr, " [%+010d] \n", stacks->sorted[counter].value);
 		counter++;
 	}
 	if (VERBOSE == 1)
-		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
+		fprintf(stderr, "  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
 								stacks->b_height, stacks->operations);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:33 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 07:27:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:36:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	get_median(t_stack_item	*stack, int length)
 		if (counter >= length)
 			counter = 1;
 	}
+	ft_printf("sorted array: %d %d %d %d %d %d %d\n", array[0].value, array[1].value, array[2].value, array[3].value, array[4].value, array[5].value, array[6].value);
 	if (array)
 		temp = array[length / 2].value;
 	free (array);
@@ -76,19 +77,25 @@ int	push_numbers_after_median(t_stack_item *p_s, \
 	ra_count = 0;
 	pushed_count = 0;
 	median = get_median(p_s, len);
+	ft_printf("Median is %d for length %d\n", median, len);
 	counter = 0;
 	while (counter < len - ra_count - pushed_count)
 	{
-		if (p_s[0].value > median)
+		if (p_s[0].value <= median)
 		{
 			push_to_other_stack(p_s, stacks);
 			pushed_count++;
 		}
-		if (p_s[0].value <= median)
+		if (p_s[0].value > median)
 		{
 			rotate_stack(p_s, stacks);
 			ra_count++;
 		}
+	}
+	while (ra_count > 0)
+	{
+		reverse_rotate_stack(p_s, stacks);
+		ra_count--;
 	}
 	return (pushed_count);
 }

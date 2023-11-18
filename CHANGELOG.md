@@ -1,9 +1,16 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- check whether number input is valid in init
+- for some weird reason, program always heap buffer overflows when using 6 parameters. huh? other even numbers work...
+- median currently rotates all the way to length even if unencessary because all elements to push were already pushed. this will only save like 2 - 10 operations per execution but still worth to look at
+- function that merges a and b operations into single sa, sb -> ss e.g.
+- remove printf statements before submitting
 
 ---
+
+### v0.0.10 - work in progress branch - 18.11.23
+- made bubble sort return to same rotation as before. obviously it cant work like this.
+- Various improvements to quick sort logic & implementation
 
 ### v0.0.9 - work in progress branch - 18.11.23
 - Continued work on quick. Base case works (bubble sort). problem is that if you
@@ -11,6 +18,8 @@
 	function returns untrue result. whoops. I can feel maaany print statements
 	coming. The pivoting does seem to work though, just the recursive repivoting
 	or sorting after pivoting needs work.
+- there was an address issue. saved in in error.md for later
+
 
 ### v0.0.8 - work in progress branch - 18.11.23
 - added check_argument_validity util function to ensure that an error gets thrown if some of the args arent numbers
