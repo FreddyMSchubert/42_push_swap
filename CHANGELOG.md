@@ -5,6 +5,14 @@
 
 ---
 
+### v0.0.8 - work in progress branch - 18.11.23
+- added check_argument_validity util function to ensure that an error gets thrown if some of the args arent numbers
+- added exit_error function that prints error message, frees stacks, then exits
+- enhanced readme readability
+- Added a bunch of files related to quick sort algo
+
+---
+
 ### v0.0.7 - 17.11.23
 - added fsanitize & fixed some issues it pointed to. now issue free!
 	- freed stacks at end of program

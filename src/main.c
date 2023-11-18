@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:49:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:52:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
-	if (argc < 3)
-		return (ft_printf("Please input at least 2 numbers to sort!\n"), 0);
+	if (check_argument_validity(argv) == 0 || argc < 3)
+		return (ft_printf(\
+		"Input format: ./push_swap <signed integers seperated by space>\n"), 0);
 	if (init_stacks(argv, &stacks) == 0)
 		return (0);
 	print_stacks(&stacks);

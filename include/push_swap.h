@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:37:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:46:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 
 // ----- SETTINGS
 
-#define VERBOSE 1		// will output detailed logging if set to 1
+// will output detailed logging if set to 1
+#define VERBOSE 1
+
+// defines at what length of substack to stop splitting and start sorting
+// (in quick sort)
+#define PIVOT_THRESH 5
 
 // ----- STRUCTS
 
@@ -48,6 +53,13 @@ typedef struct s_stacks {
 
 // ----- FILES
 
+// --- General
+
+// Util
+
+int			check_argument_validity(char	**argv);
+void		exit_error(char	*message, t_stacks	*stacks);
+
 // --- Stacks
 
 int			init_stacks(char	**argv, t_stacks	*stacks);
@@ -74,15 +86,35 @@ void		rrr(t_stacks	*stacks);
 // Utils
 
 int			ft_arraylen(const void **array);
-int			ft_tile_arraylen(t_stack_item	*array);
 void		print_colored(const char *str, char color);
 void		turn_on_gravity(t_stacks	*stacks);
 
 // --- Sorting algos
 
+// Bubble Sort
+
 void		bubble_sort(t_stacks	*stacks);
+
+// Bubble Utils
+
+// Insertion Sort
+
 void		insertion_sort(t_stacks	*stacks);
 
-// Utils
+// Insertion Utils
+
+// Quick sort
+
+int			push_numbers_after_median(t_stack_item *p_s, \
+										t_stacks *stacks, int len);
+
+// Quick utils
+
+void		push_to_other_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		swap_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		reverse_rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
+
+// General Utils
 
 int			check_correctly_sorted(t_stack_item	*stack, int height);

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:41:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:38:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	free_stacks(t_stacks	*stacks)
 	free(stacks->a);
 	free(stacks->b);
 	if (VERBOSE == 1)
-		ft_printf("Freed stacks!");
+		ft_printf("Freed stacks!\n");
 }
