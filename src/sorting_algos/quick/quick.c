@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:27:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 07:51:36 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 08:27:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,17 @@ static void	bubble_sort_stack(t_stack_item	*stack,
 								int len)
 {
 	int	last_index_val;
+	int	counter;
 
-	last_index_val = stack[len - 1].value;
+	counter = 0;
+	while (counter < len)
+	{
+		if (stack[counter].value > last_index_val)
+			last_index_val = stack[counter].value;
+		ft_printf("loop %d, curr highest num is %d.\n", last_index_val);
+		counter++;
+	}
+	ft_printf("last index val: %d\n", last_index_val);
 	while (check_correctly_sorted(stack, len) == 0)
 	{
 		if (stack[0].value > stack[1].value && \
@@ -49,6 +58,7 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 	int		numbers_pushed_over;
 	int		counter;
 
+	ft_printf("pivot rec was called.\n");
 	counter = 0;
 	if (len > PIVOT_THRESH)
 	{

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 07:46:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 08:05:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,23 @@ void		turn_on_gravity(t_stacks	*stacks);
 
 // --- Sorting algos
 
-// Bubble Sort
+// - Bubble Sort
 
 void		bubble_sort(t_stacks	*stacks);
 
 // Bubble Utils
 
-// Insertion Sort
+// - Insertion Sort
 
 void		insertion_sort(t_stacks	*stacks);
 
 // Insertion Utils
 
-// Quick sort
+// - Quick sort
+
+void		quick_sort(t_stacks	*stacks);
+
+// Median / Pivot Stuff
 
 int			push_numbers_after_median(t_stack_item *p_s, \
 										t_stacks *stacks, int len);
@@ -115,6 +119,6 @@ void		swap_stack(t_stack_item	*p_s, t_stacks	*stacks);
 void		rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
 void		reverse_rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
 
-// General Utils
+// --- General Utils
 
 int			check_correctly_sorted(t_stack_item	*stack, int height);

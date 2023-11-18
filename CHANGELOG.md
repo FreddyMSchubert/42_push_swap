@@ -5,6 +5,13 @@
 
 ---
 
+### v0.0.9 - work in progress branch - 18.11.23
+- Continued work on quick. Base case works (bubble sort). problem is that if you
+	input anything that doesnt just directly get thrown into the base case,
+	function returns untrue result. whoops. I can feel maaany print statements
+	coming. The pivoting does seem to work though, just the recursive repivoting
+	or sorting after pivoting needs work.
+
 ### v0.0.8 - work in progress branch - 18.11.23
 - added check_argument_validity util function to ensure that an error gets thrown if some of the args arent numbers
 - added exit_error function that prints error message, frees stacks, then exits

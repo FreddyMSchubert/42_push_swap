@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 07:52:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/18 08:09:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (init_stacks(argv, &stacks) == 0)
 		return (0);
 	print_stacks(&stacks);
-	bubble_sort(&stacks);
+	quick_sort(&stacks);
 	print_stacks(&stacks);
 	if (VERBOSE == 1)
 	{
