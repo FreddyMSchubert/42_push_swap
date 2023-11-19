@@ -6,13 +6,32 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 08:54:42 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:27:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* This file is here to initialize stacks and free them again. */
 
 #include "../../include/push_swap.h"
+
+static void	*set_sorted_indices(t_stacks	*stacks)
+{
+	int		i;
+	int		k;
+
+	i = 0;
+	while (i < stacks->a_height)
+	{
+		k = 0;
+		while (stacks->sorted[k].value != stacks->a[i].value)
+		{
+			k++;
+		}
+		stacks->a[i].sorted_index = k;
+		i++;
+	}
+	return (NULL);
+}
 
 // normal bubble sort without special operations
 // used to create "sorted" stack at start of program
@@ -42,7 +61,7 @@ static void	*normal_bubble_sort(t_stacks	*stacks)
 			counter = 0;
 	}
 	stacks->sorted = sorted;
-	return (NULL);
+	return (set_sorted_indices(stacks));
 }
 
 // @brief		Turns a string array in input format into desired stacks format
@@ -56,8 +75,8 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	int				height;
 
 	height = ft_arraylen((const void **)argv) - 1;
-	a = malloc (sizeof(t_stack_item *) * height);
-	b = malloc (sizeof(t_stack_item *) * height);
+	a = malloc (sizeof(t_stack_item) * height);
+	b = malloc (sizeof(t_stack_item) * height);
 	if (!a || !b)
 		return (free(a), free(b), 0);
 	stacks->height = height;

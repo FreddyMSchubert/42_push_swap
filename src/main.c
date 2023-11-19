@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 06:22:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:31:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
+	ft_printf("a");
 	if (check_argument_validity(argv) == 0 || argc < 3)
 		return (ft_printf(\
 		"Input format: ./push_swap <signed integers seperated by space>\n"), 0);
 	if (init_stacks(argv, &stacks) == 0)
 		return (0);
 	print_stacks(&stacks);
-	quick_sort(&stacks);
+	k_sort(&stacks);
+	ft_printf("%d\n", stacks.operations);
 	print_stacks(&stacks);
 	if (VERBOSE == 1)
 	{

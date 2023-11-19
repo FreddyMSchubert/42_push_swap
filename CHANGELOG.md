@@ -8,6 +8,22 @@ ra - rra right after one another can also be merged
 
 ---
 
+### v0.0.12 - work in progress branch - 19.11.23
+- fixed the ascending bubble sort, but its now way too long, will need to optimize
+- heard of a custom "k sort" algorithm, implemented it functionally. it is not yet the greatest.
+	i do know however from others it can be great so i need to revise it still.
+	i made a script to rapidly execute the program 500 times and get the average of the operations. using it, i finetuned the range value in the k sort. the results for the multiplier were:
+	```
+	1.0 - 1580
+	1.4 - 1559
+	1.5 - 1573
+	1.6 - 1439
+	1.7 - 1567
+	1.8 - 1561
+	2.0 - 1562
+	```
+	therefore, ill be moving forward with 1.6 as multiplier
+
 ### v0.0.11 - work in progress branch - 19.11.23
 - Made asc and desc bubble sorts also call corresponding correct order check
 	function, that wasn't going to work. Quick now runs through

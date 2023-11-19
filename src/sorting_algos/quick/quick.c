@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:27:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 09:23:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:14:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,44 @@
 
 #include "../../../include/push_swap.h"
 
-// @brief		Applies bubble sort to stack b ascendingly
+// @brief			Applies bubble sort to stack b ascendingly
+// @param mode 0	it goes through to end swapping out of order items
+// @param mode 1	it goes back from end to start switching to 0 if something
+// 				is out of order.
 static void	bubble_sort_stack_ascending(t_stack_item	*stack,
 								t_stacks	*stacks,
 								int len)
 {
-	int	last_index_val;
-	int	counter;
 	int	rotations;
+	int	mode;
 
-	ft_printf("Applying ascending bubble sort with length %d!\n", len);
-	counter = 0;
 	rotations = 0;
-	last_index_val = stack[0].value;
-	while (counter < len)
+	mode = 0;
+	while (check_correctly_sorted_asc(stack, len - rotations) == 0 || mode == 1)
 	{
-		if (stack[counter].value > last_index_val)
-			last_index_val = stack[counter].value;
-		ft_printf("loop %d, curr highest num is %d.\n", counter, last_index_val);
-		counter++;
-	}
-	ft_printf("last index val: %d\n", last_index_val);
-	while (check_correctly_sorted_asc(stack, len - rotations) == 0)
-	{
-		print_stacks(stacks);
-		if (stack[0].value > stack[1].value)
-			swap_stack(stack, stacks);
-		else
+		if (mode == 0)
 		{
-			rotate_stack(stack, stacks);
-			rotations++;
+			if (stack[0].value > stack[1].value)
+				swap_stack(stack, stacks);
+			else
+			{
+				rotate_stack(stack, stacks);
+				rotations++;
+			}
+			if (check_correctly_sorted_asc(stack, len - rotations) == 1)
+				mode = 1;
 		}
-	}
-	while (stack[len - 1].value != last_index_val)
-	{
-		reverse_rotate_stack(stack, stacks);
-		rotations--;
+		if (mode == 1)
+		{
+			while (rotations > 0)
+			{
+				reverse_rotate_stack(stack, stacks);
+				rotations--;
+				if (check_correctly_sorted_asc(stack, len - rotations) == 0)
+					break;
+			}
+			mode = 0;
+		}
 	}
 }
 

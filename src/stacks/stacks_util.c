@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:37:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:05:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_colored(const char *str, char color)
 		color_code = "\033[36m";
 	if (VERBOSE == 1)
 		ft_printf("%s%s\033[0m", color_code, str);
-	else
+	else if (VERBOSE == 0)
 		ft_printf("%s", str);
 }
 

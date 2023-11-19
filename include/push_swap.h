@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 06:20:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:05:48 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 // ----- SETTINGS
 
-// will output detailed logging if set to 1
-#define VERBOSE 1
+// will output detailed logging if set to 1, no logging if -1
+#define VERBOSE -1
 
 // defines at what length of substack to stop splitting and start sorting
 // (in quick sort)
@@ -29,10 +29,12 @@
 /*
 	@param value		Actual value of the item
 	@param slot_filled	1 if value is in slot, 0 if slot is empty
+	@param sorted_index	Index that value has in sorted stack / result
 */
 typedef struct s_stack_item {
 	int		value;
 	int		slot_filled;
+	int		sorted_index;
 }				t_stack_item;
 /*
 	@brief				Contains two stacks a and b of height height;
@@ -103,6 +105,12 @@ void		insertion_sort(t_stacks	*stacks);
 
 // Insertion Utils
 
+// - K sort
+
+void		k_sort(t_stacks	*stacks);
+
+// K Utils
+
 // - Quick sort
 
 void		quick_sort(t_stacks	*stacks);
@@ -123,3 +131,5 @@ void		reverse_rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
 
 int			check_correctly_sorted_asc(t_stack_item	*stack, int height);
 int			check_correctly_sorted_desc(t_stack_item	*stack, int height);
+int			find_index_by_value(t_stack_item *stack, int value, \
+										int search_distance);
