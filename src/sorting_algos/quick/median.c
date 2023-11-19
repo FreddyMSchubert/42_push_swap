@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:33 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 20:36:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 07:21:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ static int	get_median(t_stack_item	*stack, int length)
 	while (array && ++counter < length)
 		array[counter].value = stack[counter].value;
 	counter = 1;
-	while (array && check_correctly_sorted(array, length) == 0)
+	ft_printf("Successfully copied over values! len = %d\n", length);
+	while (array && check_correctly_sorted_asc(array, length) == 0)
 	{
 		if (array[counter].value < array[counter - 1].value)
 		{
+			// ft_printf("Swapping values %d and %d!\n", array[counter].value, array[counter - 1].value);
 			temp = array[counter].value;
 			array[counter].value = array[counter - 1].value;
 			array[counter - 1].value = temp;
@@ -40,34 +42,24 @@ static int	get_median(t_stack_item	*stack, int length)
 		counter++;
 		if (counter >= length)
 			counter = 1;
+		ft_printf("%d ", counter);
 	}
-	ft_printf("sorted array: %d %d %d %d %d %d %d\n", array[0].value, array[1].value, array[2].value, array[3].value, array[4].value, array[5].value, array[6].value);
+	ft_printf("\n");
+	for (int k = 0; k < length; k++)
+	 	ft_printf("%d ", array[k].value);
+	ft_printf("\n");
 	if (array)
-		temp = array[length / 2].value;
+		temp = array[length / 2 - 1].value;
 	free (array);
 	return (temp);
 }
-
-// @brief	Checks whether there are numbers above nbr in stack in range 0 - len
-// static int	numbers_above_int_in_stack(t_stack_item	*stack, int len,
-//									int nbr)
-// {
-// 	int		counter;
-
-// 	counter = 0;
-// 	while (counter < len && stack[counter].value < nbr)
-// 		counter++;
-// 	return (counter);
-// }
 
 /*
 	@brief		Pushes over all elements larger than median from p_s to s_s
 	@brief		Will always rotate p_s len / 2 times. (with int rounddown)
 	@returns	number of elements pushed.
 */
-int	push_numbers_after_median(t_stack_item *p_s, \
-									t_stacks *stacks, \
-									int len)
+int	push_numbers_after_median(t_stack_item *p_s, t_stacks *stacks, int len)
 {
 	int		ra_count;
 	int		pushed_count;
@@ -79,6 +71,7 @@ int	push_numbers_after_median(t_stack_item *p_s, \
 	median = get_median(p_s, len);
 	ft_printf("Median is %d for length %d\n", median, len);
 	counter = 0;
+	ft_printf("Pushing values larger or equal to median.\n");
 	while (counter < len - ra_count - pushed_count)
 	{
 		if (p_s[0].value <= median)

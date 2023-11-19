@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 08:05:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 06:20:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,5 @@ void		reverse_rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
 
 // --- General Utils
 
-int			check_correctly_sorted(t_stack_item	*stack, int height);
+int			check_correctly_sorted_asc(t_stack_item	*stack, int height);
+int			check_correctly_sorted_desc(t_stack_item	*stack, int height);

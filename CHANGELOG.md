@@ -1,10 +1,21 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- for some weird reason, program always heap buffer overflows when using 6 parameters. huh? other even numbers work...
-- median currently rotates all the way to length even if unencessary because all elements to push were already pushed. this will only save like 2 - 10 operations per execution but still worth to look at
-- function that merges a and b operations into single sa, sb -> ss e.g.
+- Fix sorting problem for input of exactly 6 elements.
+- function that merges a and b operations into single sa, sb -> ss e.g. and also removes redundant operations, e.g. pa pb, ra rra
+ra - rra right after one another can also be merged
 - remove printf statements before submitting
+
+---
+
+### v0.0.11 - work in progress branch - 19.11.23
+- Made asc and desc bubble sorts also call corresponding correct order check
+	function, that wasn't going to work. Quick now runs through
+- Made fix to those check functions to not check for whether elements outside
+	of size are sorted, previously did not consider rotations
+- created a good debugging setup & tried debugging, but didnt really get anywhere.
+	its clear the problem is the bubble sort which doesnt always sort correctly.
+- various improvements
 
 ---
 

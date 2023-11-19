@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 21:00:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 08:54:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	*normal_bubble_sort(t_stacks	*stacks)
 	while (++counter < stacks->height)
 		sorted[counter].value = stacks->a[counter].value;
 	counter = 0;
-	while (check_correctly_sorted(sorted, stacks->height) == 0)
+	while (check_correctly_sorted_asc(sorted, stacks->height) == 0)
 	{
 		if (sorted[counter].value > sorted[counter + 1].value)
 		{
@@ -86,6 +86,8 @@ void	print_stacks(const t_stacks	*stacks)
 	int		counter;
 
 	counter = 0;
+	if (VERBOSE == 1)
+		ft_printf("\n");
 	while (counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
@@ -100,8 +102,11 @@ void	print_stacks(const t_stacks	*stacks)
 		counter++;
 	}
 	if (VERBOSE == 1)
-		fprintf(stderr, "  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
+	{
+		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
 								stacks->b_height, stacks->operations);
+		ft_printf("\n");
+	}
 }
 
 // @brief	Frees everything allocated inside t_stacks

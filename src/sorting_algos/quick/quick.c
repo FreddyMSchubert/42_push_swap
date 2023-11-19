@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:27:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/18 20:45:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 09:23:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ static void	bubble_sort_stack_ascending(t_stack_item	*stack,
 {
 	int	last_index_val;
 	int	counter;
+	int	rotations;
 
-	ft_printf("Applying bubble sort!\n");
+	ft_printf("Applying ascending bubble sort with length %d!\n", len);
 	counter = 0;
+	rotations = 0;
 	last_index_val = stack[0].value;
 	while (counter < len)
 	{
@@ -41,16 +43,22 @@ static void	bubble_sort_stack_ascending(t_stack_item	*stack,
 		counter++;
 	}
 	ft_printf("last index val: %d\n", last_index_val);
-	while (check_correctly_sorted(stack, len) == 0)
+	while (check_correctly_sorted_asc(stack, len - rotations) == 0)
 	{
-		if (stack[0].value > stack[1].value && \
-				stack[0].value != last_index_val)
+		print_stacks(stacks);
+		if (stack[0].value > stack[1].value)
 			swap_stack(stack, stacks);
 		else
+		{
 			rotate_stack(stack, stacks);
+			rotations++;
+		}
 	}
 	while (stack[len - 1].value != last_index_val)
+	{
 		reverse_rotate_stack(stack, stacks);
+		rotations--;
+	}
 }
 
 // @brief		Applies bubble sort to stack b descendingly
@@ -61,7 +69,7 @@ static void	bubble_sort_stack_descending(t_stack_item	*stack,
 	int	last_index_val;
 	int	counter;
 
-	ft_printf("Applying bubble sort!\n");
+	ft_printf("Applying descending bubble sort with length %d!\n", len);
 	counter = 0;
 	last_index_val = stack[0].value;
 	while (counter < len)
@@ -72,7 +80,7 @@ static void	bubble_sort_stack_descending(t_stack_item	*stack,
 		counter++;
 	}
 	ft_printf("last index val: %d\n", last_index_val);
-	while (check_correctly_sorted(stack, len) == 0)
+	while (check_correctly_sorted_desc(stack, len) == 0)
 	{
 		if (stack[0].value < stack[1].value && \
 				stack[0].value != last_index_val)
@@ -80,8 +88,11 @@ static void	bubble_sort_stack_descending(t_stack_item	*stack,
 		else
 			rotate_stack(stack, stacks);
 	}
+	ft_printf("idk man i guess thats sorted correctly now who knows.\n");
 	while (stack[len - 1].value != last_index_val)
 		reverse_rotate_stack(stack, stacks);
+	for (int k = 0; k < len; k++)
+		ft_printf("%d ", stack[k]);
 }
 
 // selection is including start and including end.
@@ -95,7 +106,8 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 	int		numbers_pushed_over;
 	int		counter;
 
-	ft_printf("pivot rec was called for %d -> %d.\n", p_s[0].value, p_s[len - 1].value);
+	print_stacks(stacks);
+	ft_printf("pivot rec was called for %d -> %d. ascending is %d.\n", p_s[0].value, p_s[len - 1].value, ascending);
 	counter = 0;
 	if (len > PIVOT_THRESH)
 	{
@@ -103,11 +115,11 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 		numbers_pushed_over = push_numbers_after_median(p_s, stacks, len);
 		print_stacks(stacks);
 		ft_printf("Recalling self for first half (lower than median, in secondary stack).\n");
-		set_pivot_rec(s_s, p_s, stacks, numbers_pushed_over, -1);
+		set_pivot_rec(s_s, p_s, stacks, numbers_pushed_over, -ascending);
 		counter = 0;
 		print_stacks(stacks);
 		ft_printf("Recalling self for second half (higher than median, in primary stack)\n");
-		set_pivot_rec(p_s, s_s, stacks, len - len / 2, 1);
+		set_pivot_rec(p_s, s_s, stacks, len - numbers_pushed_over, ascending);
 		print_stacks(stacks);
 		counter = 0;
 		while (counter++ < numbers_pushed_over)
