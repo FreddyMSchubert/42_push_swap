@@ -6,27 +6,11 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 07:33:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:44:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:03:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-
-// @brief					Finds the first element with certain value in stack
-// @param search_distance	how long to search for starting from 0
-// @returns					Index of that element
-static int	find_index_by_value(t_stack_item *stack, \
-								int value, \
-								int search_distance)
-{
-	int	counter;
-
-	counter = -1;
-	while (++counter < search_distance)
-		if (stack[counter].value == value)
-			return (counter);
-	return (-1);
-}
 
 // @brief		returns the next lower available value in b.
 // @brief		if unavailable, it starts at top again.

@@ -1,7 +1,66 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- check whether number input is valid in init
+- function that merges a and b operations into single sa, sb -> ss e.g. and also removes redundant operations, e.g. pa pb, ra rra
+ra - rra right after one another can also be merged
+- remove printf statements before submitting
+
+---
+
+### v0.0.13 - work in progress branch - 20.11.23
+- further k sort finetuning
+- fixed problem in quick where input of 6 elements would crash by not thinking about it and changing stuff about the code for so long i fixed whatever the problem was on accident
+- massively reduced length of bubble sorts for quick. also put them into their own file
+- added 42 norm pdf to readme so people can read through rules & removed .vscode folder from gitignore for use on other pcs
+- added a visualizer as new submodule because its cool and potentially helpful (https://github.com/o-reo/push_swap_visualizer). to use, execute using '../submodules/push_swap_visualizer/build/bin/visualizer' and put '../../../bin/push_swap' as executable.
+
+---
+
+### v0.0.12 - work in progress branch - 19.11.23
+- fixed the ascending bubble sort, but its now way too long, will need to optimize
+- heard of a custom "k sort" algorithm, implemented it functionally. it is not yet the greatest.
+	i do know however from others it can be great so i need to revise it still.
+	i made a script to rapidly execute the program 500 times and get the average of the operations. using it, i finetuned the range value in the k sort. the results for the multiplier were:
+	```
+	1.0 - 1580
+	1.4 - 1559
+	1.5 - 1573
+	1.6 - 1439
+	1.7 - 1567
+	1.8 - 1561
+	2.0 - 1562
+	```
+	therefore, ill be moving forward with 1.6 as multiplier
+
+### v0.0.11 - work in progress branch - 19.11.23
+- Made asc and desc bubble sorts also call corresponding correct order check
+	function, that wasn't going to work. Quick now runs through
+- Made fix to those check functions to not check for whether elements outside
+	of size are sorted, previously did not consider rotations
+- created a good debugging setup & tried debugging, but didnt really get anywhere.
+	its clear the problem is the bubble sort which doesnt always sort correctly.
+- various improvements
+
+---
+
+### v0.0.10 - work in progress branch - 18.11.23
+- made bubble sort return to same rotation as before. obviously it cant work like this.
+- Various improvements to quick sort logic & implementation
+
+### v0.0.9 - work in progress branch - 18.11.23
+- Continued work on quick. Base case works (bubble sort). problem is that if you
+	input anything that doesnt just directly get thrown into the base case,
+	function returns untrue result. whoops. I can feel maaany print statements
+	coming. The pivoting does seem to work though, just the recursive repivoting
+	or sorting after pivoting needs work.
+- there was an address issue. saved in in error.md for later
+
+
+### v0.0.8 - work in progress branch - 18.11.23
+- added check_argument_validity util function to ensure that an error gets thrown if some of the args arent numbers
+- added exit_error function that prints error message, frees stacks, then exits
+- enhanced readme readability
+- Added a bunch of files related to quick sort algo
 
 ---
 

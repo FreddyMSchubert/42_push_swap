@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (lldb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/push_swap",
+            "args": ["12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"], // Any arguments your program needs
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "make build", // Or your build command
+        }
+    ]
+}

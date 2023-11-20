@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:37:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 07:43:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,24 @@
 
 // ----- SETTINGS
 
-#define VERBOSE 1		// will output detailed logging if set to 1
+// will output detailed logging if set to 1, no logging if -1
+#define VERBOSE 0
+
+// defines at what length of substack to stop splitting and start sorting
+// (in quick sort)
+#define PIVOT_THRESH 10
 
 // ----- STRUCTS
 
 /*
 	@param value		Actual value of the item
 	@param slot_filled	1 if value is in slot, 0 if slot is empty
+	@param sorted_index	Index that value has in sorted stack / result
 */
 typedef struct s_stack_item {
 	int		value;
 	int		slot_filled;
+	int		sorted_index;
 }				t_stack_item;
 /*
 	@brief				Contains two stacks a and b of height height;
@@ -47,6 +54,13 @@ typedef struct s_stacks {
 }				t_stacks;
 
 // ----- FILES
+
+// --- General
+
+// Util
+
+int			check_argument_validity(char	**argv);
+void		exit_error(char	*message, t_stacks	*stacks);
 
 // --- Stacks
 
@@ -74,15 +88,45 @@ void		rrr(t_stacks	*stacks);
 // Utils
 
 int			ft_arraylen(const void **array);
-int			ft_tile_arraylen(t_stack_item	*array);
 void		print_colored(const char *str, char color);
 void		turn_on_gravity(t_stacks	*stacks);
 
 // --- Sorting algos
 
+// - Basic Sorts
+
 void		bubble_sort(t_stacks	*stacks);
 void		insertion_sort(t_stacks	*stacks);
+void		k_sort(t_stacks	*stacks);
 
-// Utils
+// - Quick sort
 
-int			check_correctly_sorted(t_stack_item	*stack, int height);
+void		quick_sort(t_stacks	*stacks);
+
+// Median / Pivot Stuff
+
+int			push_numbers_after_median(t_stack_item *p_s, \
+										t_stacks *stacks, int len);
+
+// Bubble Stuff
+
+void		bubble_sort_stack_ascending(t_stack_item	*stack, \
+								t_stacks	*stacks, \
+								int len);
+void		bubble_sort_stack_descending(t_stack_item	*stack, \
+								t_stacks	*stacks, \
+								int len);
+
+// Quick utils
+
+void		push_to_other_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		swap_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
+void		reverse_rotate_stack(t_stack_item	*p_s, t_stacks	*stacks);
+
+// --- General Utils
+
+int			check_correctly_sorted_asc(t_stack_item	*stack, int height);
+int			check_correctly_sorted_des(t_stack_item	*stack, int height);
+int			find_index_by_value(t_stack_item *stack, int value, \
+										int search_distance);

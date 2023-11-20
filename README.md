@@ -1,16 +1,18 @@
 # push_swap
 
-> This project was created in compliance with the 42 norm, which means no ternary operators, no for loops, no in line comments, ...
+> This project was created in compliance with the 42 norm, which means no ternary operators, no switches, no for loops, no in function comments, ... -> https://s.dou.ua/storage-files/en.norm.pdf
 
 ### Subject
 
-[2] [ ]<br>
-[1] [ ]<br>
-[3] [ ]<br>
-[6] [ ]<br>
-[5] [ ]<br>
-[8] [ ]<br>
+```
+[2] [ ]
+[1] [ ]
+[3] [ ]
+[6] [ ]
+[5] [ ]
+[8] [ ]
  a -- b
+```
 
 Given 2 stacks a and b where b is emtpy and a is filled with a random amount of non-duplicated integers, sort numbers in ascending order into stack a with the following operations:
 

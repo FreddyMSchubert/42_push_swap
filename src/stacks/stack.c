@@ -6,13 +6,32 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:41:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 06:27:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* This file is here to initialize stacks and free them again. */
 
 #include "../../include/push_swap.h"
+
+static void	*set_sorted_indices(t_stacks	*stacks)
+{
+	int		i;
+	int		k;
+
+	i = 0;
+	while (i < stacks->a_height)
+	{
+		k = 0;
+		while (stacks->sorted[k].value != stacks->a[i].value)
+		{
+			k++;
+		}
+		stacks->a[i].sorted_index = k;
+		i++;
+	}
+	return (NULL);
+}
 
 // normal bubble sort without special operations
 // used to create "sorted" stack at start of program
@@ -29,7 +48,7 @@ static void	*normal_bubble_sort(t_stacks	*stacks)
 	while (++counter < stacks->height)
 		sorted[counter].value = stacks->a[counter].value;
 	counter = 0;
-	while (check_correctly_sorted(sorted, stacks->height) == 0)
+	while (check_correctly_sorted_asc(sorted, stacks->height) == 0)
 	{
 		if (sorted[counter].value > sorted[counter + 1].value)
 		{
@@ -42,7 +61,7 @@ static void	*normal_bubble_sort(t_stacks	*stacks)
 			counter = 0;
 	}
 	stacks->sorted = sorted;
-	return (NULL);
+	return (set_sorted_indices(stacks));
 }
 
 // @brief		Turns a string array in input format into desired stacks format
@@ -56,8 +75,8 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	int				height;
 
 	height = ft_arraylen((const void **)argv) - 1;
-	a = malloc (sizeof(t_stack_item *) * height);
-	b = malloc (sizeof(t_stack_item *) * height);
+	a = malloc (sizeof(t_stack_item) * height);
+	b = malloc (sizeof(t_stack_item) * height);
 	if (!a || !b)
 		return (free(a), free(b), 0);
 	stacks->height = height;
@@ -78,28 +97,35 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	return (1);
 }
 
+#include <stdio.h>
+
 // @brief	Prints out all the data in a stacks struct
 void	print_stacks(const t_stacks	*stacks)
 {
 	int		counter;
 
-	counter = 0;
-	while (counter < stacks->height && VERBOSE == 1)
+	counter = -1;
+	if (VERBOSE == 1)
+		ft_printf("\n");
+	while (++counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
-			ft_printf(" [%d] ", stacks->a[counter]);
+			fprintf(stderr, " [%+010d]%d \t", stacks->a[counter].value, \
+											stacks->a[counter].sorted_index);
 		else
-			ft_printf(" [ ] ");
+			fprintf(stderr, " \t \t");
 		if (stacks->b[counter].slot_filled == 1)
-			ft_printf(" [%d] ", stacks->b[counter]);
+			fprintf(stderr, " [%+010d] \t", stacks->b[counter].value);
 		else
-			ft_printf(" [ ] ");
-		ft_printf(" [%d] \n", stacks->sorted[counter]);
-		counter++;
+			fprintf(stderr, " \t \t");
+		fprintf(stderr, " [%+010d] \n", stacks->sorted[counter].value);
 	}
 	if (VERBOSE == 1)
+	{
 		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
 								stacks->b_height, stacks->operations);
+		ft_printf("\n");
+	}
 }
 
 // @brief	Frees everything allocated inside t_stacks
@@ -108,5 +134,5 @@ void	free_stacks(t_stacks	*stacks)
 	free(stacks->a);
 	free(stacks->b);
 	if (VERBOSE == 1)
-		ft_printf("Freed stacks!");
+		ft_printf("Freed stacks!\n");
 }
