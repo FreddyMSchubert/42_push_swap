@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:27:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 07:44:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:00:47 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,13 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 		if (VERBOSE == 1)
 			ft_printf("Len larger than Pivot! After pushing numbers after median:\n");
 		numbers_pushed_over = push_numbers_after_median(p_s, stacks, len);
-		print_stacks(stacks);
 		if (VERBOSE == 1)
 			ft_printf("Recalling self for first half (lower than median, in secondary stack).\n");
 		set_pivot_rec(s_s, p_s, stacks, numbers_pushed_over, -ascending);
 		counter = 0;
-		print_stacks(stacks);
 		if (VERBOSE == 1)
 			ft_printf("Recalling self for second half (higher than median, in primary stack)\n");
 		set_pivot_rec(p_s, s_s, stacks, len - numbers_pushed_over, ascending);
-		print_stacks(stacks);
 		counter = 0;
 		while (counter++ < numbers_pushed_over)
 			push_to_other_stack(s_s, stacks);
@@ -60,7 +57,6 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 		bubble_sort_stack_ascending(p_s, stacks, len);
 	if (len <= PIVOT_THRESH && ascending == -1)
 		bubble_sort_stack_descending(p_s, stacks, len);
-	print_stacks(stacks);
 	if (VERBOSE == 1)
 		ft_printf("pivot rec is done with %d -> %d.\n", p_s[0].value, p_s[len - 1].value);
 }

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 07:43:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 09:41:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 // defines at what length of substack to stop splitting and start sorting
 // (in quick sort)
-#define PIVOT_THRESH 10
+#define PIVOT_THRESH 5
 
 // ----- STRUCTS
 
