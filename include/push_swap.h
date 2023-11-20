@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 09:41:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:50:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ typedef struct s_stack_item {
 	int		sorted_index;
 }				t_stack_item;
 /*
+	@brief				Keeps track of one result line
+	@param line			The actual line itself
+	@param result_len	allocated length including NULL
+*/
+typedef struct s_result_line {
+	char	**line;
+	int		result_len;
+}				t_result_line;
+/*
 	@brief				Contains two stacks a and b of height height;
 	@param **a			Stack a. (length = height) (Pointer array)
 	@param **b			Stack b. (length = height) (Pointer array)
@@ -51,6 +60,9 @@ typedef struct s_stacks {
 	int				b_height;
 	int				height;
 	int				operations;
+	t_result_line	k_result;
+	t_result_line	bubble_result;
+	t_result_line	insert_result;
 }				t_stacks;
 
 // ----- FILES
@@ -61,6 +73,12 @@ typedef struct s_stacks {
 
 int			check_argument_validity(char	**argv);
 void		exit_error(char	*message, t_stacks	*stacks);
+
+// Results
+
+void		*init_results(t_stacks	*stacks);
+void		*add_result(t_result_line *result_line, char	*val);
+void		print_best_result(t_stacks	*stacks);
 
 // --- Stacks
 
@@ -130,3 +148,4 @@ int			check_correctly_sorted_asc(t_stack_item	*stack, int height);
 int			check_correctly_sorted_des(t_stack_item	*stack, int height);
 int			find_index_by_value(t_stack_item *stack, int value, \
 										int search_distance);
+void		swap_item_properties(t_stack_item	*item1, t_stack_item	*item2);

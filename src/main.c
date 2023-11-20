@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 07:43:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:51:01 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,18 @@ int	main(int argc, char **argv)
 		"Input format: ./push_swap <signed integers seperated by space>\n"), 0);
 	if (init_stacks(argv, &stacks) == 0)
 		return (0);
-	print_stacks(&stacks);
-	quick_sort(&stacks);
-	print_stacks(&stacks);
+	bubble_sort(&stacks);
 	if (VERBOSE == 1)
 	{
 		if (check_correctly_sorted_asc(stacks.a, stacks.height) == 1)
 			ft_printf("\033[0;32mInput was correctly sorted in %d operations! \
 						Yaay!\033[0m\n", stacks.operations);
 		else
-			ft_printf("\033[0;31mThat was not correctly sorted. \
-						It took %d operations. \033[0m\n", stacks.operations);
+			ft_printf("\033[0;31mThat wasnt correctly sorted in %d operations. \
+						\033[0m\n", stacks.operations);
 	}
-	free_stacks(&stacks);
 	// ft_printf("%d\n", stacks.operations);
+	print_best_result(&stacks);
+	free_stacks(&stacks);
 	return (1);
 }

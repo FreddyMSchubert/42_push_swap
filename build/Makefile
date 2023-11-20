@@ -1,4 +1,4 @@
-NAME = ../bin/push_swap
+NAME = ../push_swap
 
 SRC = $(shell find ../src -name "*.c")
 OBJ = $(SRC:.c=.o)

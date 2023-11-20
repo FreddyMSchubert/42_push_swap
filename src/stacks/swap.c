@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:06:53 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/16 07:12:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:15:48 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@
 
 void	sa(t_stacks	*stacks, int print_stack)
 {
-	int		temp;
-
 	stacks->operations++;
 	print_colored("sa\n", 'r');
 	if (stacks->a[0].slot_filled && stacks->a[1].slot_filled)
 	{
-		temp = stacks->a[0].value;
-		stacks->a[0].value = stacks->a[1].value;
-		stacks->a[1].value = temp;
+		swap_item_properties(&stacks->a[0], &stacks->a[1]);
 		if (VERBOSE == 1 && print_stack == 1)
 			print_stacks(stacks);
 	}
@@ -34,15 +30,11 @@ void	sa(t_stacks	*stacks, int print_stack)
 
 void	sb(t_stacks	*stacks, int print_stack)
 {
-	int		temp;
-
 	stacks->operations++;
 	print_colored("sb\n", 'r');
 	if (stacks->b[0].slot_filled && stacks->b[1].slot_filled)
 	{
-		temp = stacks->b[0].value;
-		stacks->b[0].value = stacks->b[1].value;
-		stacks->b[1].value = temp;
+		swap_item_properties(&stacks->b[0], &stacks->b[1]);
 		if (VERBOSE == 1 && print_stack == 1)
 			print_stacks(stacks);
 	}

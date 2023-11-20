@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 20:05:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:29:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ int	ft_arraylen(const void **array)
 	while (array[count] != NULL)
 		count++;
 	return (count);
+}
+
+void	swap_item_properties(t_stack_item	*item1, t_stack_item	*item2)
+{
+	int		tval;
+	int		tfilled;
+	int		tsorted;
+
+	tval = item1->value;
+	tfilled = item1->slot_filled;
+	tsorted = item1->sorted_index;
+	item1->value = item2->value;
+	item1->slot_filled = item2->slot_filled;
+	item1->sorted_index = item2->sorted_index;
+	item2->value = tval;
+	item2->slot_filled = tfilled;
+	item2->sorted_index = tsorted;
 }
 
 // @brief		Prints stuff, but with colors! No colors if verbose is off
@@ -65,7 +82,7 @@ static void	gravitize_stack(t_stack_item *stack, int height)
 				counter2++;
 			if (counter2 == height)
 				break ;
-			stack[counter].value = stack[counter2].value;
+			swap_item_properties(&stack[counter], &stack[counter2]);
 			stack[counter].slot_filled = 1;
 			stack[counter2].slot_filled = 0;
 		}

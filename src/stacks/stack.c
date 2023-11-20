@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 09:20:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:36:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ static void	*set_sorted_indices(t_stacks	*stacks)
 	while (i < stacks->a_height)
 	{
 		k = 0;
-		while (stacks->sorted[k].value != stacks->a[i].value)
+		while (k < stacks->height)
 		{
+			if (stacks->sorted[k].value == stacks->a[i].value)
+				stacks->a[i].sorted_index = k;
 			k++;
 		}
-		stacks->a[i].sorted_index = k;
 		i++;
 	}
 	return (NULL);
@@ -70,31 +71,29 @@ static void	*normal_bubble_sort(t_stacks	*stacks)
 // @param[out]	0 on failure, 1 on success
 int	init_stacks(char	**argv, t_stacks	*stacks)
 {
-	t_stack_item	*a;
-	t_stack_item	*b;
 	int				height;
 
 	height = ft_arraylen((const void **)argv) - 1;
-	a = malloc (sizeof(t_stack_item) * height);
-	b = malloc (sizeof(t_stack_item) * height);
-	if (!a || !b)
-		return (free(a), free(b), 0);
+	stacks->a = malloc (sizeof(t_stack_item) * height);
+	stacks->b = malloc (sizeof(t_stack_item) * height);
+	if (!stacks->a || !stacks->b)
+		return (free(stacks->a), free(stacks->b), 0);
 	stacks->height = height;
 	stacks->operations = 0;
 	stacks->a_height = 0;
 	stacks->b_height = 0;
 	while (stacks->a_height < stacks->height)
 	{
-		a[stacks->a_height].value = ft_atoi(argv[stacks->a_height + 1]);
-		a[stacks->a_height].slot_filled = 1;
-		b[stacks->a_height].value = 0;
-		b[stacks->a_height].slot_filled = 0;
+		stacks->a[stacks->a_height].value = ft_atoi(argv[stacks->a_height + 1]);
+		stacks->a[stacks->a_height].slot_filled = 1;
+		stacks->a[stacks->a_height].sorted_index = 0;
+		stacks->b[stacks->a_height].value = 0;
+		stacks->b[stacks->a_height].slot_filled = 0;
+		stacks->b[stacks->a_height].sorted_index = 0;
 		stacks->a_height++;
 	}
-	stacks->a = a;
-	stacks->b = b;
 	normal_bubble_sort(stacks);
-	return (1);
+	return (init_results(stacks), 1);
 }
 
 #include <stdio.h>
@@ -110,11 +109,11 @@ void	print_stacks(const t_stacks	*stacks)
 	while (++counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
-			fprintf(stderr, " [%+010d] \t", stacks->a[counter].value);
+			fprintf(stderr, " [%+010d]%d \t", stacks->a[counter].value, stacks->a[counter].sorted_index);
 		else
 			fprintf(stderr, " \t \t");
 		if (stacks->b[counter].slot_filled == 1)
-			fprintf(stderr, " [%+010d] \t", stacks->b[counter].value);
+			fprintf(stderr, " [%+010d]%d \t", stacks->b[counter].value, stacks->b[counter].sorted_index);
 		else
 			fprintf(stderr, " \t \t");
 		fprintf(stderr, " [%+010d] \n", stacks->sorted[counter].value);

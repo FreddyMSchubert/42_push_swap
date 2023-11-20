@@ -11,6 +11,12 @@ ra - rra right after one another can also be merged
 
 ---
 
+### v0.0.15 - 20.11.23
+- fixed sorted index assignment
+- removed bin folder, changed executable location
+- made k sort work and made my life a lot easier by introducing a swap_item_properties function and using it in all the operation functions
+- started adding results tracker to replace directly printing, for now only in bubble sort
+
 ### v0.0.14 - 20.11.23
 - various code readability & norminette improvements
 - simplified get_median and push_numbers_after_median functions with some performance improvements
@@ -23,6 +29,7 @@ ra - rra right after one another can also be merged
 - massively reduced length of bubble sorts for quick. also put them into their own file
 - added 42 norm pdf to readme so people can read through rules & removed .vscode folder from gitignore for use on other pcs
 - added a visualizer as new submodule because its cool and potentially helpful (https://github.com/o-reo/push_swap_visualizer). to use, execute using '../submodules/push_swap_visualizer/build/bin/visualizer' and put '../bin/push_swap' as executable.
+updated v0.0.15: '../push_swap'
 - merged back to master
 
 ---

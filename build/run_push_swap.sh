@@ -28,7 +28,7 @@ generate_numbers() {
             nums+=($num)
             echo -n "$num "
         fi
-    done | xargs ../bin/push_swap
+    done | xargs ../push_swap
 }
 
 # Default values

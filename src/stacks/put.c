@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:34:48 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/17 07:43:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:21:47 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ void	pa(t_stacks	*stacks)
 		{
 			counter = stacks->height - 1;
 			while (--counter >= 0)
-			{
-				stacks->a[counter + 1].value = stacks->a[counter].value;
-				stacks->a[counter + 1].slot_filled = \
-						stacks->a[counter].slot_filled;
-			}
+				swap_item_properties \
+						(&stacks->a[counter + 1], &stacks->a[counter]);
 		}
-		stacks->a[0].value = stacks->b[0].value;
+		swap_item_properties(&stacks->a[0], &stacks->b[0]);
 		stacks->a[0].slot_filled = 1;
 		stacks->b[0].slot_filled = 0;
 		stacks->a_height++;
@@ -53,13 +50,10 @@ void	pb(t_stacks	*stacks)
 		{
 			counter = stacks->height - 1;
 			while (--counter >= 0)
-			{
-				stacks->b[counter + 1].value = stacks->b[counter].value;
-				stacks->b[counter + 1].slot_filled = \
-						stacks->b[counter].slot_filled;
-			}
+				swap_item_properties \
+						(&stacks->b[counter + 1], &stacks->b[counter]);
 		}
-		stacks->b[0].value = stacks->a[0].value;
+		swap_item_properties(&stacks->b[0], &stacks->a[0]);
 		stacks->b[0].slot_filled = 1;
 		stacks->a[0].slot_filled = 0;
 		stacks->b_height++;
