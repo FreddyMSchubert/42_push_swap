@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:34:48 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 17:21:47 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:53:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	pa(t_stacks	*stacks)
 {
 	int		counter;
 
-	print_colored("pa\n", 'y');
 	if (stacks->b[0].slot_filled == 1)
 	{
-		stacks->operations++;
 		if (stacks->a[0].slot_filled == 1)
 		{
 			counter = stacks->height - 1;
@@ -42,10 +40,8 @@ void	pb(t_stacks	*stacks)
 {
 	int		counter;
 
-	print_colored("pb\n", 'y');
 	if (stacks->a[0].slot_filled == 1)
 	{
-		stacks->operations++;
 		if (stacks->b[0].slot_filled == 1)
 		{
 			counter = stacks->height - 1;

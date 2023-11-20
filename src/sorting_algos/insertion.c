@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 07:33:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 19:03:25 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:21:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,18 @@ static void	rotate_b_to_perfectly_receive_slot(t_stacks	*stacks)
 	while (stacks->b[0].value != nbr_to_be_top.value)
 	{
 		if (index_to_be_top - 0 < stacks->b_height - index_to_be_top + 1)
-			rb(stacks, 1);
+			do_operation(stacks, &stacks->insert_result, "rb");
 		else
-			rrb(stacks, 1);
+			do_operation(stacks, &stacks->insert_result, "rrb");
 	}
 }
 
 void	insertion_sort(t_stacks	*stacks)
 {
 	while (stacks->a[0].slot_filled != 0)
-	{
-		pb(stacks);
-		rotate_b_to_perfectly_receive_slot(stacks);
-	}
+		do_operation(stacks, &stacks->insert_result, "pb");
 	while (stacks->b[0].value != stacks->sorted[stacks->height - 1].value)
-	{
 		rotate_b_to_perfectly_receive_slot(stacks);
-	}
 	while (stacks->b[0].slot_filled != 0)
-	{
-		pa(stacks);
-	}
+		do_operation(stacks, &stacks->insert_result, "pa");
 }

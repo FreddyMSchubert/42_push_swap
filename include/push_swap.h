@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 17:50:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:55:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void		exit_error(char	*message, t_stacks	*stacks);
 void		*init_results(t_stacks	*stacks);
 void		*add_result(t_result_line *result_line, char	*val);
 void		print_best_result(t_stacks	*stacks);
+void		remove_redundancies_in_result(t_result_line	*result);
 
 // --- Stacks
 
@@ -88,26 +89,28 @@ void		free_stacks(t_stacks	*stacks);
 
 // Functions
 
-void		sa(t_stacks	*stacks, int print_stack);
-void		sb(t_stacks	*stacks, int print_stack);
+void		sa(t_stacks	*stacks);
+void		sb(t_stacks	*stacks);
 void		ss(t_stacks	*stacks);
 
 void		pa(t_stacks	*stacks);
 void		pb(t_stacks	*stacks);
 
-void		ra(t_stacks	*stacks, int print_stack);
-void		rb(t_stacks	*stacks, int print_stack);
+void		ra(t_stacks	*stacks);
+void		rb(t_stacks	*stacks);
 void		rr(t_stacks	*stacks);
 
-void		rra(t_stacks	*stacks, int print_stack);
-void		rrb(t_stacks	*stacks, int print_stack);
+void		rra(t_stacks	*stacks);
+void		rrb(t_stacks	*stacks);
 void		rrr(t_stacks	*stacks);
 
 // Utils
 
 int			ft_arraylen(const void **array);
-void		print_colored(const char *str, char color);
 void		turn_on_gravity(t_stacks	*stacks);
+void		do_operation(t_stacks	*stacks, t_result_line	*line, \
+							char	*operation);
+void		free_results(t_result_line	*line);
 
 // --- Sorting algos
 

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:44:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 16:36:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:21:56 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	push_elements_back_efficiently(t_stacks	*stacks)
 														stacks->height);
 			if (highest_element_b_index - 0 < \
 								stacks->b_height - highest_element_b_index)
-				rb(stacks, 1);
+				do_operation(stacks, &stacks->k_result, "rb");
 			else
-				rrb(stacks, 1);
+				do_operation(stacks, &stacks->k_result, "rrb");
 		}
 		pa(stacks);
 		curr_highest_element--;
@@ -60,18 +60,18 @@ void	k_sort(t_stacks	*stacks)
 	{
 		if (stacks->a[0].sorted_index <= i)
 		{
-			pb(stacks);
-			rb(stacks, 1);
+			do_operation(stacks, &stacks->k_result, "pb");
+			do_operation(stacks, &stacks->k_result, "rb");
 			i++;
 		}
 		else if (stacks->a[0].sorted_index <= i + range)
 		{
-			pb(stacks);
+			do_operation(stacks, &stacks->k_result, "pb");
 			i++;
 		}
 		else
 		{
-			ra(stacks, 1);
+			do_operation(stacks, &stacks->k_result, "ra");
 		}
 	}
 	push_elements_back_efficiently(stacks);

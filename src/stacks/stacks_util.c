@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 16:29:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:55:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,6 @@ void	swap_item_properties(t_stack_item	*item1, t_stack_item	*item2)
 	item2->sorted_index = tsorted;
 }
 
-// @brief		Prints stuff, but with colors! No colors if verbose is off
-void	print_colored(const char *str, char color)
-{
-	const char	*color_code;
-
-	color_code = "\033[0m";
-	if (color == 'r')
-		color_code = "\033[31m";
-	if (color == 'g')
-		color_code = "\033[32m";
-	if (color == 'y')
-		color_code = "\033[33m";
-	if (color == 'b')
-		color_code = "\033[34m";
-	if (color == 'm')
-		color_code = "\033[35m";
-	if (color == 'c')
-		color_code = "\033[36m";
-	if (VERBOSE == 1)
-		ft_printf("%s%s\033[0m", color_code, str);
-	else if (VERBOSE == 0)
-		ft_printf("%s", str);
-}
-
 static void	gravitize_stack(t_stack_item *stack, int height)
 {
 	int		counter;
@@ -95,4 +71,14 @@ void	turn_on_gravity(t_stacks	*stacks)
 {
 	gravitize_stack(stacks->a, stacks->height);
 	gravitize_stack(stacks->b, stacks->height);
+}
+
+void	free_results(t_result_line	*line)
+{
+	int		counter;
+
+	counter = 0;
+	while (counter < line->result_len)
+		free(line->line[counter]);
+	free(line->line);
 }

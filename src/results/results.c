@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:45:20 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 17:51:20 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:47:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ void	*add_result(t_result_line *result_line, char	*val)
 	while (result_line->line[counter] != NULL)
 		counter++;
 	if (counter == result_line->result_len - 1)
-	{
 		result_line->result_len++;
-		result_line->line = realloc(result_line->line, sizeof(char *) * \
-									(result_line->result_len + 1));
-	}
+	result_line->line = realloc(result_line->line, sizeof(char *) * \
+								(result_line->result_len + 1));
+	if (!result_line->line)
+		return (NULL);
+	result_line->line[result_line->result_len] = NULL;
 	result_line->line[counter] = malloc(sizeof(char) * (ft_strlen(val) + 1));
 	if (!result_line->line[counter])
 		return (NULL);
@@ -64,22 +65,28 @@ static void	print_result(t_result_line	*result)
 	if (VERBOSE != -1)
 	{
 		counter = 0;
-		while (counter < result->result_len && result->line[counter] != NULL)
+		while (counter < result->result_len - 1)
 		{
-			ft_printf("%s\n", result->line[counter]);
+			ft_printf("Printing index %d.\n", counter);
+			if (result->line[counter] && result->line[counter] != NULL)
+				ft_printf("%s\n", result->line[counter]);
+			else
+				ft_printf("was null\n");
 			counter++;
 		}
 	}
 }
 
 void	print_best_result(t_stacks	*stacks)
-{;
-	print_result(&stacks->bubble_result);
-	// if (stacks->bubble_result.result_len < stacks->insert_result.result_len && \
-	// 	stacks->bubble_result.result_len < stacks->k_result.result_len)
-	// 	print_result(&stacks->bubble_result);
-	// else if (stacks->insert_result.result_len < stacks->k_result.result_len)
-	// 	print_result(&stacks->insert_result);
-	// else
-	// 	print_result(&stacks->k_result);
+{
+	remove_redundancies_in_result(&stacks->bubble_result);
+	remove_redundancies_in_result(&stacks->k_result);
+	remove_redundancies_in_result(&stacks->insert_result);
+	if (stacks->bubble_result.result_len < stacks->insert_result.result_len && \
+		stacks->bubble_result.result_len < stacks->k_result.result_len)
+		print_result(&stacks->bubble_result);
+	else if (stacks->insert_result.result_len < stacks->k_result.result_len)
+		print_result(&stacks->insert_result);
+	else
+		print_result(&stacks->k_result);
 }

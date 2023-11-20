@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 17:36:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:55:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 	return (init_results(stacks), 1);
 }
 
-#include <stdio.h>
-
 // @brief	Prints out all the data in a stacks struct
 void	print_stacks(const t_stacks	*stacks)
 {
@@ -109,14 +107,16 @@ void	print_stacks(const t_stacks	*stacks)
 	while (++counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
-			fprintf(stderr, " [%+010d]%d \t", stacks->a[counter].value, stacks->a[counter].sorted_index);
+			ft_printf(" [%d]%d \t", stacks->a[counter].value, \
+							stacks->a[counter].sorted_index);
 		else
-			fprintf(stderr, " \t \t");
+			ft_printf(" \t \t");
 		if (stacks->b[counter].slot_filled == 1)
-			fprintf(stderr, " [%+010d]%d \t", stacks->b[counter].value, stacks->b[counter].sorted_index);
+			ft_printf(" [%d]%d \t", stacks->b[counter].value, \
+							stacks->b[counter].sorted_index);
 		else
-			fprintf(stderr, " \t \t");
-		fprintf(stderr, " [%+010d] \n", stacks->sorted[counter].value);
+			ft_printf(" \t \t");
+		ft_printf(" [%d] \n", stacks->sorted[counter].value);
 	}
 	if (VERBOSE == 1)
 	{
@@ -131,6 +131,9 @@ void	free_stacks(t_stacks	*stacks)
 {
 	free(stacks->a);
 	free(stacks->b);
+	free_results(&stacks->bubble_result);
+	free_results(&stacks->insert_result);
+	free_results(&stacks->k_result);
 	if (VERBOSE == 1)
 		ft_printf("Freed stacks!\n");
 }

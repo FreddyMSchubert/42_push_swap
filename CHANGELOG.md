@@ -1,20 +1,21 @@
 # push_swap by @fschuber Changelog
 
-### todo
-- function that merges a and b operations into single sa, sb -> ss e.g. and also removes redundant operations, e.g. pa pb, ra rra
-ra - rra right after one another can also be merged
-- remove printf statements before submitting
-
-### ideas / potential improvements
-- implement insertion sort. its better. i think.
-- fix pivot half ordering
-
 ---
 
-### v0.0.15 - 20.11.23
+### v0.1.1 - 20.11.23
+- Added results_optimizer than picks out any redundancies in result and removes them.
+- made insertion sort and k sort work with new result format so they can also be optimized before being outputted. to do this, i added a do_operation function that increments the operations counter, does the operation, and adds it to the result tracker
+- removed print statements from operation functions to fully switch to new system
+- removed system print statements to get ready for submission
+- removed quick sort as it will not be submitted. if i ever want to fix the issues there, i get can get it out of the git history.
+- printing of results with new system is still flawed. I get memory leaks.
+- large variety of code refactoring & improvements, norminette is now without errors
+
+### v0.1.0 - 20.11.23
 - fixed sorted index assignment
 - removed bin folder, changed executable location
 - made k sort work and made my life a lot easier by introducing a swap_item_properties function and using it in all the operation functions
+- functional pretty efficient sorting from 0 to 500 inputs. incrementing version number!
 - started adding results tracker to replace directly printing, for now only in bubble sort
 
 ### v0.0.14 - 20.11.23
