@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 07:33:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:21:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:43:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ static void	rotate_b_to_perfectly_receive_slot(t_stacks	*stacks)
 {
 	t_stack_item		nbr_to_be_top;
 	int					index_to_be_top;
-	int					counter;
 
-	counter = -1;
 	if (stacks->a[0].slot_filled == 0)
 		index_to_be_top = find_index_by_value(stacks->b, \
 					stacks->sorted[stacks->height - 1].value, stacks->height);

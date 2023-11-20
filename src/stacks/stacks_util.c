@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:55:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:26:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	free_results(t_result_line	*line)
 {
 	int		counter;
 
-	counter = 0;
-	while (counter < line->result_len)
+	counter = -1;
+	while (++counter < line->result_len)
 		free(line->line[counter]);
 	free(line->line);
 }

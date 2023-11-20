@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   results_optimizer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:17:24 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 18:40:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:31:54 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ static void	merge_items(t_result_line *result, char *wanted1, \
 	counter = 0;
 	while (counter < result->result_len)
 	{
-		if ((result->line[counter] == wanted1 && \
-			result->line[counter + 1] == wanted2) || \
-			(result->line[counter] == wanted2 && \
-			result->line[counter + 1] == wanted1))
+		if ((ft_strncmp(result->line[counter], wanted1, 3) == 0 && \
+			ft_strncmp(result->line[counter + 1], wanted2, 3) == 0) || \
+			(ft_strncmp(result->line[counter], wanted2, 3) == 0 && \
+			ft_strncmp(result->line[counter + 1], wanted1, 3) == 0))
 		{
-			ft_printf("found a merge redundancy!\n");
+			if (VERBOSE == 0)
+				ft_printf("found a merge redundancy!\n");
 			result->line[counter][replindex] = result->line[counter][0];
 			free(result->line[counter + 1]);
-			result->line[counter + 1] = NULL;
+			result->line[counter + 1][0] = '0';
 		}
 		counter++;
 	}
@@ -48,16 +49,17 @@ static void	remove_redundant_items(t_result_line *result, char *wanted1, \
 	counter = 0;
 	while (counter < result->result_len)
 	{
-		if ((result->line[counter] == wanted1 && \
-			result->line[counter + 1] == wanted2) || \
-			(result->line[counter] == wanted2 && \
-			result->line[counter + 1] == wanted1))
+		if ((ft_strncmp(result->line[counter], wanted1, 3) == 0 && \
+			ft_strncmp(result->line[counter + 1], wanted2, 3) == 0) || \
+			(ft_strncmp(result->line[counter], wanted2, 3) == 0 && \
+			ft_strncmp(result->line[counter + 1], wanted1, 3) == 0))
 		{
-			ft_printf("found a redundancy!\n");
+			if (VERBOSE == 0)
+				ft_printf("found a redundancy!\n");
 			free(result->line[counter]);
 			free(result->line[counter + 1]);
-			result->line[counter] = NULL;
-			result->line[counter + 1] = NULL;
+			result->line[counter][0] = '0';
+			result->line[counter + 1][0] = '0';
 		}
 		counter++;
 	}

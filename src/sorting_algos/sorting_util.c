@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_util.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:02:06 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:26:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:45:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,28 @@ int	check_correctly_sorted_des(t_stack_item	*stack, int height)
 
 static void	perform_operation(t_stacks	*stacks, char	*operation)
 {
-	if (ft_strncmp(operation, "sa", 3) == 0)
+	ft_printf("Trying to perform %s operation.\n", operation);
+	if (ft_strncmp(operation, "sa", 2) == 0)
 		sa(stacks);
-	else if (ft_strncmp(operation, "sb", 3) == 0)
+	else if (ft_strncmp(operation, "sb", 2) == 0)
 		sb(stacks);
-	else if (ft_strncmp(operation, "ss", 3) == 0)
+	else if (ft_strncmp(operation, "ss", 2) == 0)
 		ss(stacks);
-	else if (ft_strncmp(operation, "pa", 3) == 0)
+	else if (ft_strncmp(operation, "pa", 2) == 0)
 		pa(stacks);
-	else if (ft_strncmp(operation, "pb", 3) == 0)
+	else if (ft_strncmp(operation, "pb", 2) == 0)
 		pb(stacks);
-	else if (ft_strncmp(operation, "ra", 3) == 0)
+	else if (ft_strncmp(operation, "ra", 2) == 0)
 		ra(stacks);
-	else if (ft_strncmp(operation, "rb", 3) == 0)
+	else if (ft_strncmp(operation, "rb", 2) == 0)
 		rb(stacks);
-	else if (ft_strncmp(operation, "rr", 3) == 0)
+	else if (ft_strncmp(operation, "rr", 2) == 0)
 		rr(stacks);
-	else if (ft_strncmp(operation, "rra", 4) == 0)
+	else if (ft_strncmp(operation, "rra", 3) == 0)
 		rra(stacks);
-	else if (ft_strncmp(operation, "rrb", 4) == 0)
+	else if (ft_strncmp(operation, "rrb", 3) == 0)
 		rrb(stacks);
-	else if (ft_strncmp(operation, "rrr", 4) == 0)
+	else if (ft_strncmp(operation, "rrr", 3) == 0)
 		rrr(stacks);
 }
 
@@ -92,8 +93,8 @@ static void	perform_operation(t_stacks	*stacks, char	*operation)
 void	do_operation(t_stacks	*stacks, t_result_line	*line, char	*operation)
 {
 	stacks->operations++;
-	if (VERBOSE != -1)
+	if (VERBOSE == 1)
 		ft_printf("%s\n", operation);
-	add_result(line, operation);
 	perform_operation(stacks, operation);
+	add_result(line, operation);
 }

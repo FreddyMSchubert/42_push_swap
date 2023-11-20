@@ -2,6 +2,10 @@
 
 ---
 
+### v0.1.2 - 20.11.23
+- Added proper norm link
+- Made results save 0 for removed results during optimization, previously used NULL which was a problem with printing them out. Printing still doesnt work but were getting there (hopefully). Bubble and K work as expected, but peculiarly, insert doesnt, and i dont understand why.
+
 ### v0.1.1 - 20.11.23
 - Added results_optimizer than picks out any redundancies in result and removes them.
 - made insertion sort and k sort work with new result format so they can also be optimized before being outputted. to do this, i added a do_operation function that increments the operations counter, does the operation, and adds it to the result tracker

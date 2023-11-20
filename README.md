@@ -1,6 +1,6 @@
 # push_swap
 
-> This project was created in compliance with the 42 norm, which means no ternary operators, no switches, no for loops, no in function comments, ... -> https://s.dou.ua/storage-files/en.norm.pdf
+> This project was created in compliance with the 42 norm, which means no ternary operators, no switches, no for loops, no in function comments, ... -> https://github.com/FreddyMSchubert/42_cursus/blob/main/en.norm.pdf
 
 ### Subject
 
