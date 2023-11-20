@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 19:27:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 06:27:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,14 @@ void	print_stacks(const t_stacks	*stacks)
 {
 	int		counter;
 
-	counter = 0;
+	counter = -1;
 	if (VERBOSE == 1)
 		ft_printf("\n");
-	while (counter < stacks->height && VERBOSE == 1)
+	while (++counter < stacks->height && VERBOSE == 1)
 	{
 		if (stacks->a[counter].slot_filled == 1)
-			fprintf(stderr, " [%+010d] \t", stacks->a[counter].value);
+			fprintf(stderr, " [%+010d]%d \t", stacks->a[counter].value, \
+											stacks->a[counter].sorted_index);
 		else
 			fprintf(stderr, " \t \t");
 		if (stacks->b[counter].slot_filled == 1)
@@ -118,7 +119,6 @@ void	print_stacks(const t_stacks	*stacks)
 		else
 			fprintf(stderr, " \t \t");
 		fprintf(stderr, " [%+010d] \n", stacks->sorted[counter].value);
-		counter++;
 	}
 	if (VERBOSE == 1)
 	{

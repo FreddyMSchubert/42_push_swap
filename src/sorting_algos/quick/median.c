@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:33 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 07:21:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 07:47:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int	get_median(t_stack_item	*stack, int length)
 	while (array && ++counter < length)
 		array[counter].value = stack[counter].value;
 	counter = 1;
-	ft_printf("Successfully copied over values! len = %d\n", length);
+	if (VERBOSE == 1)
+		ft_printf("Successfully copied over values! len = %d\n", length);
 	while (array && check_correctly_sorted_asc(array, length) == 0)
 	{
 		if (array[counter].value < array[counter - 1].value)
@@ -42,12 +43,15 @@ static int	get_median(t_stack_item	*stack, int length)
 		counter++;
 		if (counter >= length)
 			counter = 1;
-		ft_printf("%d ", counter);
+		if (VERBOSE == 1)
+			ft_printf("%d ", counter);
 	}
-	ft_printf("\n");
-	for (int k = 0; k < length; k++)
+	if (VERBOSE == 1)
+		ft_printf("\n");
+	for (int k = 0; VERBOSE == 1 && k < length; k++)
 	 	ft_printf("%d ", array[k].value);
-	ft_printf("\n");
+	if (VERBOSE == 1)
+		ft_printf("\n");
 	if (array)
 		temp = array[length / 2 - 1].value;
 	free (array);
@@ -69,9 +73,11 @@ int	push_numbers_after_median(t_stack_item *p_s, t_stacks *stacks, int len)
 	ra_count = 0;
 	pushed_count = 0;
 	median = get_median(p_s, len);
-	ft_printf("Median is %d for length %d\n", median, len);
+	if (VERBOSE == 1)
+		ft_printf("Median is %d for length %d\n", median, len);
 	counter = 0;
-	ft_printf("Pushing values larger or equal to median.\n");
+	if (VERBOSE == 1)
+		ft_printf("Pushing values larger or equal to median.\n");
 	while (counter < len - ra_count - pushed_count)
 	{
 		if (p_s[0].value <= median)

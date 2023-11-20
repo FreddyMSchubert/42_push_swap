@@ -1,10 +1,18 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- Fix sorting problem for input of exactly 6 elements.
 - function that merges a and b operations into single sa, sb -> ss e.g. and also removes redundant operations, e.g. pa pb, ra rra
 ra - rra right after one another can also be merged
 - remove printf statements before submitting
+
+---
+
+### v0.0.13 - work in progress branch - 20.11.23
+- further k sort finetuning
+- fixed problem in quick where input of 6 elements would crash by not thinking about it and changing stuff about the code for so long i fixed whatever the problem was on accident
+- massively reduced length of bubble sorts for quick. also put them into their own file
+- added 42 norm pdf to readme so people can read through rules & removed .vscode folder from gitignore for use on other pcs
+- added a visualizer as new submodule because its cool and potentially helpful (https://github.com/o-reo/push_swap_visualizer). to use, execute using '../submodules/push_swap_visualizer/build/bin/visualizer' and put '../../../bin/push_swap' as executable.
 
 ---
 

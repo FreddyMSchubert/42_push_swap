@@ -23,11 +23,3 @@ Every odd recursive depth has e.g. a as primary and b as secondary, where
 	that is switched for every even depth.
 	This should work well as long as we never leave any elements inside of the
 	other stack accidentally & never move anything outside of the 0 -> length range
-
-passing a negative value as len should count from the end of the stack to end - len.
-that way, when having pushed one half, we can sort the 
-
-
-sort the lower halfinstead you numbnut. and pass through rec whether to sort asc or desc
-and make it sort the other way around than right now for the elements that were pushed
-to secondary stack.

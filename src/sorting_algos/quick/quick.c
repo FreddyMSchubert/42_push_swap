@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:27:14 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/19 18:14:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/20 07:44:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,81 +22,6 @@
 
 #include "../../../include/push_swap.h"
 
-// @brief			Applies bubble sort to stack b ascendingly
-// @param mode 0	it goes through to end swapping out of order items
-// @param mode 1	it goes back from end to start switching to 0 if something
-// 				is out of order.
-static void	bubble_sort_stack_ascending(t_stack_item	*stack,
-								t_stacks	*stacks,
-								int len)
-{
-	int	rotations;
-	int	mode;
-
-	rotations = 0;
-	mode = 0;
-	while (check_correctly_sorted_asc(stack, len - rotations) == 0 || mode == 1)
-	{
-		if (mode == 0)
-		{
-			if (stack[0].value > stack[1].value)
-				swap_stack(stack, stacks);
-			else
-			{
-				rotate_stack(stack, stacks);
-				rotations++;
-			}
-			if (check_correctly_sorted_asc(stack, len - rotations) == 1)
-				mode = 1;
-		}
-		if (mode == 1)
-		{
-			while (rotations > 0)
-			{
-				reverse_rotate_stack(stack, stacks);
-				rotations--;
-				if (check_correctly_sorted_asc(stack, len - rotations) == 0)
-					break;
-			}
-			mode = 0;
-		}
-	}
-}
-
-// @brief		Applies bubble sort to stack b descendingly
-static void	bubble_sort_stack_descending(t_stack_item	*stack,
-								t_stacks	*stacks,
-								int len)
-{
-	int	last_index_val;
-	int	counter;
-
-	ft_printf("Applying descending bubble sort with length %d!\n", len);
-	counter = 0;
-	last_index_val = stack[0].value;
-	while (counter < len)
-	{
-		if (stack[counter].value < last_index_val)
-			last_index_val = stack[counter].value;
-		ft_printf("loop %d, curr lowest num is %d.\n", counter, last_index_val);
-		counter++;
-	}
-	ft_printf("last index val: %d\n", last_index_val);
-	while (check_correctly_sorted_desc(stack, len) == 0)
-	{
-		if (stack[0].value < stack[1].value && \
-				stack[0].value != last_index_val)
-			swap_stack(stack, stacks);
-		else
-			rotate_stack(stack, stacks);
-	}
-	ft_printf("idk man i guess thats sorted correctly now who knows.\n");
-	while (stack[len - 1].value != last_index_val)
-		reverse_rotate_stack(stack, stacks);
-	for (int k = 0; k < len; k++)
-		ft_printf("%d ", stack[k]);
-}
-
 // selection is including start and including end.
 // ascending is either 1 or -1, 1 if ascending, -1 is decending
 static void	set_pivot_rec(t_stack_item	*p_s, \
@@ -109,18 +34,22 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 	int		counter;
 
 	print_stacks(stacks);
-	ft_printf("pivot rec was called for %d -> %d. ascending is %d.\n", p_s[0].value, p_s[len - 1].value, ascending);
+	if (VERBOSE == 1)
+		ft_printf("pivot rec was called for %d -> %d. ascending is %d.\n", p_s[0].value, p_s[len - 1].value, ascending);
 	counter = 0;
 	if (len > PIVOT_THRESH)
 	{
-		ft_printf("Len larger than Pivot! After pushing numbers after median:\n");
+		if (VERBOSE == 1)
+			ft_printf("Len larger than Pivot! After pushing numbers after median:\n");
 		numbers_pushed_over = push_numbers_after_median(p_s, stacks, len);
 		print_stacks(stacks);
-		ft_printf("Recalling self for first half (lower than median, in secondary stack).\n");
+		if (VERBOSE == 1)
+			ft_printf("Recalling self for first half (lower than median, in secondary stack).\n");
 		set_pivot_rec(s_s, p_s, stacks, numbers_pushed_over, -ascending);
 		counter = 0;
 		print_stacks(stacks);
-		ft_printf("Recalling self for second half (higher than median, in primary stack)\n");
+		if (VERBOSE == 1)
+			ft_printf("Recalling self for second half (higher than median, in primary stack)\n");
 		set_pivot_rec(p_s, s_s, stacks, len - numbers_pushed_over, ascending);
 		print_stacks(stacks);
 		counter = 0;
@@ -132,7 +61,8 @@ static void	set_pivot_rec(t_stack_item	*p_s, \
 	if (len <= PIVOT_THRESH && ascending == -1)
 		bubble_sort_stack_descending(p_s, stacks, len);
 	print_stacks(stacks);
-	ft_printf("pivot rec is done with %d -> %d.\n", p_s[0].value, p_s[len - 1].value);
+	if (VERBOSE == 1)
+		ft_printf("pivot rec is done with %d -> %d.\n", p_s[0].value, p_s[len - 1].value);
 }
 
 void	quick_sort(t_stacks	*stacks)

@@ -4,3 +4,6 @@
 [submodule "submodules/42_libft"]
 	path = submodules/42_libft
 	url = https://github.com/FreddyMSchubert/42_libft
+[submodule "submodules/push_swap_visualizer"]
+	path = submodules/push_swap_visualizer
+	url = https://github.com/o-reo/push_swap_visualizer
