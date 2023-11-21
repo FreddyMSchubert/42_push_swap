@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:35:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:56:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:24:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,15 @@ void	rb(t_stacks	*stacks, int print)
 	int		temp_sort;
 	int		i;
 
-	i = 1;
+	i = 0;
 	stacks->operations++;
 	if (print == 1)
 		print_colored("rb", 'y');
 	temp_val = stacks->b[0].value;
 	temp_fill = stacks->b[0].slot_filled;
 	temp_sort = stacks->b[0].sorted_index;
-	while (i < stacks->height)
-	{
+	while (++i < stacks->height)
 		swap_item_properties(&stacks->b[i - 1], &stacks->b[i]);
-		i++;
-	}
 	i--;
 	stacks->b[i].slot_filled = temp_fill;
 	stacks->b[i].value = temp_val;

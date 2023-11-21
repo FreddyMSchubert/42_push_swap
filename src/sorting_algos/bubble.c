@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:50:36 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:17:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:30:48 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,18 @@ void	bubble_sort(t_stacks	*stacks)
 			ra(stacks, 1);
 	}
 }
+
+// @brief		Simple bubble sort implementation.
+// @brief		107 operations for 9 8 7 6 5 4 3 2 1 0
+void	bubble_sort_desc(t_stacks	*stacks)
+{
+	while (check_correctly_sorted_des(stacks->b, stacks->b_height) == 0)
+	{
+		if (stacks->b[0].value < stacks->b[1].value && \
+				stacks->b[0].value != stacks->sorted[0].value)
+			sb(stacks, 1);
+		else
+			rb(stacks, 1);
+	}
+}
+

@@ -1,9 +1,15 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- implement ability to read out numbers in one continuous string
+- implement ability to read out numbers from one continuous string
+- display errors as "Error\n" in stderr
+- do bonus, probably wont be hard.
 
 ---
+
+### v0.1.4 - 21.11.23
+- added cheap_quick algorithm, which just splits the numbers in a and b and then applies bubble sort. still more efficient than any other algorithm for values 5 - 9 though!
+- did a lot of testing. the steps now never go over the subject boundaries. that means im done! time to finish up.
 
 ### v0.1.3 - 21.11.23
 - removed whole results logic. it was unnecessary, it didnt actually improve the program much but increased complexity a lot

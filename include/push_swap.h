@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:48:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:39:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 // ----- SETTINGS
 
-// will output detailed logging if set to 1, no logging if -1
-#define VERBOSE -1
+// will output detailed logging if set to 1
+#define VERBOSE 0
 
 // defines at what length of substack to stop splitting and start sorting
 // (in quick sort)
@@ -93,11 +93,14 @@ void		turn_on_gravity(t_stacks	*stacks);
 // --- Sorting algos
 
 void		bubble_sort(t_stacks	*stacks);
+void		bubble_sort_desc(t_stacks	*stacks);
 void		k_sort(t_stacks	*stacks);
+void		cheap_quick_sort(t_stacks	*stacks);
 
 // --- General Utils
 
 int			check_correctly_sorted_asc(t_stack_item	*stack, int height);
+int			check_correctly_sorted_des(t_stack_item	*stack, int height);
 int			find_index_by_value(t_stack_item *stack, int value, \
 										int search_distance);
 void		swap_item_properties(t_stack_item	*item1, t_stack_item	*item2);
