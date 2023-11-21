@@ -1,11 +1,15 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- implement ability to read out numbers from one continuous string
-- display errors as "Error\n" in stderr
 - do bonus, probably wont be hard.
+- make a nice and detailed readme
 
 ---
+
+### v0.1.5 - 21.11.23
+- made input possible via "5" "6" "2" format or "5 6 2" format. Thanks to this, the checker program now runs through successfully.
+- correct displayed errors in stderr as stated in subject
+- this is a small commit but imma try docker now and i dont want to risk permanent collateral damage
 
 ### v0.1.4 - 21.11.23
 - added cheap_quick algorithm, which just splits the numbers in a and b and then applies bubble sort. still more efficient than any other algorithm for values 5 - 9 though!

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 08:45:09 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:59:51 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:17:11 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,29 @@
 
 #include "../include/push_swap.h"
 
+int	check_argument_validity_string(char	**argv)
+{
+	int	counter;
+
+	counter = 0;
+	while (argv[1][counter])
+	{
+		if (!ft_isdigit(argv[1][counter]) && !(argv[1][counter] == '-') && \
+				!(argv[1][counter] == ' '))
+			return (0);
+		counter++;
+	}
+	return (1);
+}
+
 // @brief	Used to check validity of inputted arguments
 int	check_argument_validity(char	**argv)
 {
 	int		word_selector;
 	int		char_selector;
 
+	if (ft_arraylen((const void **)argv) == 2)
+		return (check_argument_validity_string(argv));
 	argv++;
 	word_selector = 0;
 	while (argv[word_selector] != NULL)
@@ -40,8 +57,12 @@ int	check_argument_validity(char	**argv)
 // @brief	exits program after freeing stacks and logging an error message
 void	exit_error(char	*message, t_stacks	*stacks)
 {
-	ft_printf(message);
-	free_stacks(stacks);
+	if (VERBOSE == 1)
+		ft_printf(message);
+	else
+		write(2, "Error\n", 6);
+	if (stacks != NULL)
+		free_stacks(stacks);
 	exit(EXIT_FAILURE);
 }
 
