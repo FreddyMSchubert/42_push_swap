@@ -6,10 +6,15 @@
 
 ---
 
+### v0.2.0 - 21.11.23
+- did some error handling for when there is the same number multiple times & for when an input is outside of int range
+- made a function that detects when everythings already sorted and exits the program
+- fixed case where there is only 1 input by handling it explicitly
+- i am now completely prepared for all the tests in the non-bonus tier. bonus time! (sounds like an occasion worthy of version number incrementation.)
+
 ### v0.1.5 - 21.11.23
 - made input possible via "5" "6" "2" format or "5 6 2" format. Thanks to this, the checker program now runs through successfully.
 - correct displayed errors in stderr as stated in subject
-- this is a small commit but imma try docker now and i dont want to risk permanent collateral damage
 
 ### v0.1.4 - 21.11.23
 - added cheap_quick algorithm, which just splits the numbers in a and b and then applies bubble sort. still more efficient than any other algorithm for values 5 - 9 though!

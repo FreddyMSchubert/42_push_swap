@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:54:15 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 11:10:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:37:00 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	*set_sorted_indices(t_stacks	*stacks)
 		}
 		i++;
 	}
+	check_errors_in_input(stacks);
 	return (NULL);
 }
 
@@ -43,29 +44,27 @@ static void	*set_sorted_indices(t_stacks	*stacks)
 static void	*normal_bubble_sort(t_stacks	*stacks)
 {
 	int				counter;
-	t_stack_item	*sorted;
 	int				temp;
 
 	counter = -1;
-	sorted = malloc(sizeof(t_stack_item) * stacks->height);
-	if (!sorted)
+	stacks->sorted = malloc(sizeof(t_stack_item) * stacks->height);
+	if (!stacks->sorted)
 		return (NULL);
 	while (++counter < stacks->height)
-		sorted[counter].value = stacks->a[counter].value;
+		stacks->sorted[counter].value = stacks->a[counter].value;
 	counter = 0;
-	while (check_correctly_sorted_asc(sorted, stacks->height) == 0)
+	while (check_correctly_sorted_asc(stacks->sorted, stacks->height) == 0)
 	{
-		if (sorted[counter].value > sorted[counter + 1].value)
+		if (stacks->sorted[counter].value > stacks->sorted[counter + 1].value)
 		{
-			temp = sorted[counter].value;
-			sorted[counter].value = sorted[counter + 1].value;
-			sorted[counter + 1].value = temp;
+			temp = stacks->sorted[counter].value;
+			stacks->sorted[counter].value = stacks->sorted[counter + 1].value;
+			stacks->sorted[counter + 1].value = temp;
 		}
 		counter++;
 		if (counter > stacks->height - 2)
 			counter = 0;
 	}
-	stacks->sorted = sorted;
 	return (set_sorted_indices(stacks));
 }
 

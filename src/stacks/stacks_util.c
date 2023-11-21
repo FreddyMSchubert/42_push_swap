@@ -6,13 +6,15 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:58:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:35:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* This file contains some helpful utils for the other stack files. */
 
 #include "../../include/push_swap.h"
+
+#include <limits.h>	// for int limits
 
 // @brief	Counts elements in a NULL - terminated array of any type
 int	ft_arraylen(const void **array)
@@ -73,4 +75,27 @@ void	turn_on_gravity(t_stacks	*stacks)
 {
 	gravitize_stack(stacks->a, stacks->height);
 	gravitize_stack(stacks->b, stacks->height);
+}
+
+void	check_errors_in_input(t_stacks	*stacks)
+{
+	int		counter;
+	int		counter2;
+
+	counter = 0;
+	while (counter < stacks->height)
+	{
+		if (stacks->a[counter].value > INT_MAX || \
+			stacks->a[counter].value < INT_MIN)
+			exit_error("Non - int value inputted.\n", stacks);
+		counter2 = 0;
+		while (counter2 < stacks->height)
+		{
+			if (stacks->a[counter].value == stacks->a[counter2].value && \
+				counter != counter2)
+				exit_error("Duplicate value inputted!\n", stacks);
+			counter2++;
+		}
+		counter++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 08:45:09 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 11:17:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:37:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	exit_error(char	*message, t_stacks	*stacks)
 	if (VERBOSE == 1)
 		ft_printf(message);
 	else
-		write(2, "Error\n", 6);
+		if (write(2, "Error\n", 6) == 0)
+			ft_printf("");
 	if (stacks != NULL)
 		free_stacks(stacks);
 	exit(EXIT_FAILURE);

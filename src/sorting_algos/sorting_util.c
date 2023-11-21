@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:02:06 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 08:28:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:27:36 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	find_index_by_value(t_stack_item *stack, \
 			return (counter);
 	return (-1);
 }
-
 
 // @return		1 if specified stack is ascending up to index height or 0.
 int	check_correctly_sorted_asc(t_stack_item	*stack, int height)

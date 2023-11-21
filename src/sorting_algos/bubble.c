@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:50:36 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 08:30:48 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:27:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	bubble_sort_desc(t_stacks	*stacks)
 			rb(stacks, 1);
 	}
 }
-
