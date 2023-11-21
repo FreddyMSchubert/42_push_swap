@@ -6,13 +6,13 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:44:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:21:56 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 06:52:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-// @brief		Returns sqrt of num with 2 decimal point precision
+// @brief		Returns sqrt of num with no decimal point precision
 int	ft_sqrt(int num)
 {
 	double	sqrt;
@@ -25,6 +25,10 @@ int	ft_sqrt(int num)
 	return (sqrt);
 }
 
+/*
+	@brief	pushes all elements from b to a in the most efficient order that
+	@brief	results in a being sorted.
+*/
 static void	push_elements_back_efficiently(t_stacks	*stacks)
 {
 	int		curr_highest_element;
@@ -40,15 +44,20 @@ static void	push_elements_back_efficiently(t_stacks	*stacks)
 														stacks->height);
 			if (highest_element_b_index - 0 < \
 								stacks->b_height - highest_element_b_index)
-				do_operation(stacks, &stacks->k_result, "rb");
+				rb(stacks, 1);
 			else
-				do_operation(stacks, &stacks->k_result, "rrb");
+				rrb(stacks, 1);
 		}
 		pa(stacks);
 		curr_highest_element--;
 	}
 }
 
+/*
+	@brief	Sorts by first pushing over the elements in a strategically
+			so they can later be more easily pulled back in 
+			push_elements_back_efficiently
+*/
 void	k_sort(t_stacks	*stacks)
 {
 	int		i;
@@ -60,18 +69,18 @@ void	k_sort(t_stacks	*stacks)
 	{
 		if (stacks->a[0].sorted_index <= i)
 		{
-			do_operation(stacks, &stacks->k_result, "pb");
-			do_operation(stacks, &stacks->k_result, "rb");
+			pb(stacks);
+			rb(stacks, 1);
 			i++;
 		}
 		else if (stacks->a[0].sorted_index <= i + range)
 		{
-			do_operation(stacks, &stacks->k_result, "pb");
+			pb(stacks);
 			i++;
 		}
 		else
 		{
-			do_operation(stacks, &stacks->k_result, "ra");
+			ra(stacks, 1);
 		}
 	}
 	push_elements_back_efficiently(stacks);

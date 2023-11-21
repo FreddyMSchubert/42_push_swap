@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:50:36 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:05:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 06:17:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ void	bubble_sort(t_stacks	*stacks)
 	{
 		if (stacks->a[0].value > stacks->a[1].value && \
 				stacks->a[0].value != stacks->sorted[stacks->height - 1].value)
-		{
-			do_operation(stacks, &stacks->bubble_result, "sa");
-		}
+			sa(stacks, 1);
 		else
-		{
-			do_operation(stacks, &stacks->bubble_result, "ra");
-		}
+			ra(stacks, 1);
 	}
 }

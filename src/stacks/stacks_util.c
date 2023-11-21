@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:50:35 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:55:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 06:58:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_arraylen(const void **array)
 	return (count);
 }
 
+// @brief		Swaps all item properties of two stack items
 void	swap_item_properties(t_stack_item	*item1, t_stack_item	*item2)
 {
 	int		tval;
@@ -42,6 +43,7 @@ void	swap_item_properties(t_stack_item	*item1, t_stack_item	*item2)
 	item2->sorted_index = tsorted;
 }
 
+// @brief	Moves all elements in a stack to begging, removing empty spaces
 static void	gravitize_stack(t_stack_item *stack, int height)
 {
 	int		counter;
@@ -71,14 +73,4 @@ void	turn_on_gravity(t_stacks	*stacks)
 {
 	gravitize_stack(stacks->a, stacks->height);
 	gravitize_stack(stacks->b, stacks->height);
-}
-
-void	free_results(t_result_line	*line)
-{
-	int		counter;
-
-	counter = 0;
-	while (counter < line->result_len)
-		free(line->line[counter]);
-	free(line->line);
 }

@@ -6,18 +6,22 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:34:48 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 18:53:42 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 06:54:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
+// @brief		pa (push a) -> Take the first element at the top of b 
+// @brief		and put it at the top of a.
 void	pa(t_stacks	*stacks)
 {
 	int		counter;
 
 	if (stacks->b[0].slot_filled == 1)
 	{
+		stacks->operations++;
+		print_colored("pa", 'r');
 		if (stacks->a[0].slot_filled == 1)
 		{
 			counter = stacks->height - 1;
@@ -36,12 +40,16 @@ void	pa(t_stacks	*stacks)
 		print_stacks(stacks);
 }
 
+// @brief	pb (push b) -> Take the first element at the top of a
+// @brief	and put it at the top of b.
 void	pb(t_stacks	*stacks)
 {
 	int		counter;
 
 	if (stacks->a[0].slot_filled == 1)
 	{
+		stacks->operations++;
+		print_colored("pb", 'r');
 		if (stacks->b[0].slot_filled == 1)
 		{
 			counter = stacks->height - 1;
