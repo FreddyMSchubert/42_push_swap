@@ -1,5 +1,16 @@
 # push_swap by @fschuber Changelog
 
+### todo
+- implement ability to read out numbers in one continuous string
+
+---
+
+### v0.1.3 - 21.11.23
+- removed whole results logic. it was unnecessary, it didnt actually improve the program much but increased complexity a lot
+- added a finetuning.sh script that iterates through different input amounts which can then be compared between different scripts. turns out, theres no need for insertion sort at all. the small area where it would be a little better than k sort is also where bubble sort is even better. so no insertion sort!
+- i went on a big commenting spree and made sure every function was at least a little documented
+- using a modification of the get_average script that also prints out the largest ever occurring number of operations. every case works but the case with 5 inputs, my program goes over 12 steps there.
+
 ---
 
 ### v0.1.2 - 20.11.23

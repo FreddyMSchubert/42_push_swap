@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/20 19:55:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 06:57:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #include "../../include/push_swap.h"
 
+/*
+	@brief		Loops through stack a, finding every value on sorted stack.
+				Saves the sorted index.
+*/
 static void	*set_sorted_indices(t_stacks	*stacks)
 {
 	int		i;
@@ -93,7 +97,7 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 		stacks->a_height++;
 	}
 	normal_bubble_sort(stacks);
-	return (init_results(stacks), 1);
+	return (1);
 }
 
 // @brief	Prints out all the data in a stacks struct
@@ -131,9 +135,6 @@ void	free_stacks(t_stacks	*stacks)
 {
 	free(stacks->a);
 	free(stacks->b);
-	free_results(&stacks->bubble_result);
-	free_results(&stacks->insert_result);
-	free_results(&stacks->k_result);
 	if (VERBOSE == 1)
 		ft_printf("Freed stacks!\n");
 }
