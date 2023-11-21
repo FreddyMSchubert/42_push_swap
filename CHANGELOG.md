@@ -6,6 +6,13 @@
 
 ---
 
+### v0.2.1 - 21.11.23
+- started work on checker.
+- imported get_next_line as submodule
+- Made all operations take a bool int as a parameter to indicate whether to print out the operation so we can reuse the same functions from the checker program and from teh main program.
+- finished up work on checker. was really easy since i could reuse pretty much all functions.
+- thats it actually. will start first grading attempt now.
+
 ### v0.2.0 - 21.11.23
 - did some error handling for when there is the same number multiple times & for when an input is outside of int range
 - made a function that detects when everythings already sorted and exits the program

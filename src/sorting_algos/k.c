@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:44:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:52:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:05:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	push_elements_back_efficiently(t_stacks	*stacks)
 			else
 				rrb(stacks, 1);
 		}
-		pa(stacks);
+		pa(stacks, 1);
 		curr_highest_element--;
 	}
 }
@@ -69,13 +69,13 @@ void	k_sort(t_stacks	*stacks)
 	{
 		if (stacks->a[0].sorted_index <= i)
 		{
-			pb(stacks);
+			pb(stacks, 1);
 			rb(stacks, 1);
 			i++;
 		}
 		else if (stacks->a[0].sorted_index <= i + range)
 		{
-			pb(stacks);
+			pb(stacks, 1);
 			i++;
 		}
 		else

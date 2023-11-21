@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:35:12 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:55:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:04:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,13 @@ void	rrb(t_stacks	*stacks, int print)
 	@brief		rrr (reverse rotate 2) -> Shift down all elements of both stacks
 				by 1. The last becomes the first.
 */
-void	rrr(t_stacks	*stacks)
+void	rrr(t_stacks	*stacks, int print)
 {
 	rra(stacks, 0);
 	rrb(stacks, 0);
 	stacks->operations--;
-	print_colored("rrr", 'b');
+	if (print == 1)
+		print_colored("rrr", 'b');
 	if (VERBOSE == 1)
 		print_stacks(stacks);
 }

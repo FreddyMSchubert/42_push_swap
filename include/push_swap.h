@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 13:36:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:05:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "../submodules/42_ft_printf/ft_printf.h"
 #include "../submodules/42_libft/libft.h"
+#include "../submodules/42_get_next_line/get_next_line.h"
 
 // ----- SETTINGS
 
@@ -73,18 +74,18 @@ void		free_stacks(t_stacks	*stacks);
 
 void		sa(t_stacks	*stacks, int print);
 void		sb(t_stacks	*stacks, int print);
-void		ss(t_stacks	*stacks);
+void		ss(t_stacks	*stacks, int print);
 
-void		pa(t_stacks	*stacks);
-void		pb(t_stacks	*stacks);
+void		pa(t_stacks	*stacks, int print);
+void		pb(t_stacks	*stacks, int print);
 
 void		ra(t_stacks	*stacks, int print);
 void		rb(t_stacks	*stacks, int print);
-void		rr(t_stacks	*stacks);
+void		rr(t_stacks	*stacks, int print);
 
 void		rra(t_stacks	*stacks, int print);
 void		rrb(t_stacks	*stacks, int print);
-void		rrr(t_stacks	*stacks);
+void		rrr(t_stacks	*stacks, int print);
 
 // Utils
 

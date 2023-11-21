@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:06:53 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 06:59:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:04:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ void	sb(t_stacks	*stacks, int print)
 }
 
 // @brief	ss (swap 2) -> Swap the first two elements at the top of both stacks
-void	ss(t_stacks	*stacks)
+void	ss(t_stacks	*stacks, int print)
 {
 	sa(stacks, 0);
 	sb(stacks, 0);
 	stacks->operations--;
-	print_colored("ss", 'g');
+	if (print == 1)
+		print_colored("ss", 'g');
 	if (VERBOSE == 1)
 		print_stacks(stacks);
 }

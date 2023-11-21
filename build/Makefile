@@ -1,7 +1,12 @@
 NAME = ../push_swap
+BNAME= ../checker
 
 SRC = $(shell find ../src -name "*.c")
+BSRC = $(shell find ../src_bonus -name "*.c")
 OBJ = $(SRC:.c=.o)
+BOBJ = $(BSRC:.c=.o)
+
+CHSRC = $(shell find ../submodules/42_get_next_line -name "*.c")
 
 CFLAGS		:= -Wall -Werror -Wextra \
 				-Wunreachable-code -Ofast -g -fsanitize=address
@@ -11,14 +16,18 @@ LIBS		:=	-L../submodules/42_ft_printf/ -lftprintf \
 
 $(NAME): $(OBJ)
 	@cc $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
+$(BNAME): $(BOBJ)
+	@cc $(CFLAGS) $(LIBS) $(filter-out ../src/main.o, $(SRC:.c=.o)) $(BOBJ) $(CHSRC) -o $(BNAME)
 %.o: %.c
 	@cc -c $< $(CFLAGS) $(HEADER) -o $@
 
-all: $(NAME)
+all: $(NAME) $(BNAME)
+push_swap: $(NAME)
+bonus: $(BNAME)
 clean:
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(BOBJ)
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BNAME)
 re: fclean all
 fcomp:
 	@cd ../include && norminette

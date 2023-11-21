@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:11:47 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 08:16:48 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:05:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	cheap_quick_sort(t_stacks	*stacks)
 	while (counter < stacks->height)
 	{
 		if (stacks->a[0].sorted_index < stacks->height / 2)
-			pb(stacks);
+			pb(stacks, 1);
 		else
 			ra(stacks, 1);
 		counter++;
@@ -31,5 +31,5 @@ void	cheap_quick_sort(t_stacks	*stacks)
 	bubble_sort(stacks);
 	bubble_sort_desc(stacks);
 	while (stacks->b[0].slot_filled == 1)
-		pa(stacks);
+		pa(stacks, 1);
 }

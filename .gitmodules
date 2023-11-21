@@ -7,3 +7,6 @@
 [submodule "submodules/push_swap_visualizer"]
 	path = submodules/push_swap_visualizer
 	url = https://github.com/o-reo/push_swap_visualizer
+[submodule "submodules/42_get_next_line"]
+	path = submodules/42_get_next_line
+	url = https://github.com/FreddyMSchubert/42_get_next_line
