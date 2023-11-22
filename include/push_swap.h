@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 16:05:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/22 07:38:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_stacks {
 // Util
 
 int			check_argument_validity(char	**argv);
+int			ft_limits_atoi(const char *s, t_stacks	*stacks);
 void		exit_error(char	*message, t_stacks	*stacks);
 
 // --- Stacks

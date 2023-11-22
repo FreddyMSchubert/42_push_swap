@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:54:15 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 13:37:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/22 07:33:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int	init_stacks_seperated(char	**argv, t_stacks	*stacks)
 	stacks->b_height = 0;
 	while (stacks->a_height < stacks->height)
 	{
-		stacks->a[stacks->a_height].value = ft_atoi(argv[stacks->a_height + 1]);
+		stacks->a[stacks->a_height].value = \
+							ft_limits_atoi(argv[stacks->a_height + 1], stacks);
 		stacks->a[stacks->a_height].slot_filled = 1;
 		stacks->b[stacks->a_height].value = 0;
 		stacks->b[stacks->a_height].slot_filled = 0;
@@ -109,7 +110,7 @@ int	init_stacks_string(char	**argv, t_stacks	*stacks)
 	while (stacks->a_height < stacks->height)
 	{
 		stacks->a[stacks->a_height].value = \
-								ft_atoi(split_argv[stacks->a_height]);
+						ft_limits_atoi(split_argv[stacks->a_height], stacks);
 		stacks->a[stacks->a_height].slot_filled = 1;
 		stacks->b[stacks->a_height].slot_filled = 0;
 		stacks->b[stacks->a_height].sorted_index = 0;
@@ -129,5 +130,4 @@ int	init_stacks(char	**argv, t_stacks	*stacks)
 		return (init_stacks_string(argv, stacks));
 	else
 		return (init_stacks_seperated(argv, stacks));
-	return (0);
 }

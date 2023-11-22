@@ -85,9 +85,6 @@ void	check_errors_in_input(t_stacks	*stacks)
 	counter = 0;
 	while (counter < stacks->height)
 	{
-		if (stacks->a[counter].value > INT_MAX || \
-			stacks->a[counter].value < INT_MIN)
-			exit_error("Non - int value inputted.\n", stacks);
 		counter2 = 0;
 		while (counter2 < stacks->height)
 		{

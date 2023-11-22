@@ -1,10 +1,15 @@
 # push_swap by @fschuber Changelog
 
 ### todo
-- do bonus, probably wont be hard.
 - make a nice and detailed readme
 
 ---
+
+### v1.0.0 - 22.11.23
+- First grading attempt failed. Will have to wait a couple days to retry. There was a problem with one error condition, the INT limits one. Really stupid mistake, but that's exactly what code reviews are good for. But at least now I know that the rest of my project is flawless and hand in ready.
+- created stacks_number_input file which does an atoi while checking for valid int range. if outside of range, it exits program. made input management functions call this file.
+- made sure number larger than long range that wrap around to be within int range also get picked up as an error
+- removed fsanitize from makefile, last time i accidentally handed in the project with that flag still on
 
 ### v0.2.1 - 21.11.23
 - started work on checker.
