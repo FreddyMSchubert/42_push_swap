@@ -66,39 +66,28 @@ I started out implementing a bunch of algorithms and seeing how efficient they w
 
 ### Unused Algorithms
 
-<div style="border-left: 4px solid #007bff; border-radius: 4px; color: black; background-color: #cce5ff; padding: 10px; margin-bottom: 10px;">
-	<strong>Insertion Sort:</strong> First, push all elements into stack b. Then, continue rotating b to the highest element possible and pushing it back to stack a until the stack is sorted.<br>
+<strong>Insertion Sort:</strong> First, push all elements into stack b. Then, continue rotating b to the highest element possible and pushing it back to stack a until the stack is sorted.<br>
 	<em>Why is it not included:</em> We lose a lot of moves where we do no sorting at all by pushing things to b. If we can find a way to sort the elements a little while pushing to b and then ensure correct order when pushing back, we'd be much better off. (-> K Sort)
-</div>
 
-<div style="border-left: 4px solid #28a745; border-radius: 4px; color: black; background-color: #d4edda; padding: 10px; margin-bottom: 10px;">
-	<strong>Quick Sort:</strong> Recursively, pick a pivot, push everything above the pivot to the other stack, and call yourself on both halves. When you get called and your selected area is below a threshhold, apply bubble sort instead of setting another pivot.<br>
+<strong>Quick Sort:</strong> Recursively, pick a pivot, push everything above the pivot to the other stack, and call yourself on both halves. When you get called and your selected area is below a threshhold, apply bubble sort instead of setting another pivot.<br>
 	<em>Why is it not included:</em> This would have been the most complicated algorithm, and I didn't get it done before coming into contact with K sort, which blew it out of the water in terms of efficiency.<br>
-</div>
 
 ### Used Algorithms
 
-<div style="border-left: 4px solid #ffa500; border-radius: 4px; color: black; background-color: #fff3cd; padding: 10px; margin-bottom: 10px;">
-	<strong>Bubble Sort (< 5 stack-len):</strong> If the current value is larger than the next, swap them, otherwise rotate the stack.<br>
+<strong>Bubble Sort (< 5 stack-len):</strong> If the current value is larger than the next, swap them, otherwise rotate the stack.<br>
 	<em>Problem:</em> Since the stacks wrap around, you will go in an infinite loop.<br>
-	<em>Solution:</em> Just don't swap the elements if the element at index 0 is the one that will end up being at the very end of the sorted stack.
-</div>
+<em>Solution:</em> Just don't swap the elements if the element at index 0 is the one that will end up being at the very end of the sorted stack.
 
-<div style="border-left: 4px solid #6f42c1; border-radius: 4px; color: black; background-color: #f3e8ff; padding: 10px; margin-bottom: 10px;">
-	<strong>Cheap Quick Sort (< 10 stack-len):</strong> Quick sort, but it's not recursive. You just set a pivot once and apply bubble on both halves.<br>
-	<em>Why have it at all:</em> Because surprisingly, it actually surpasses both bubble and k sort in operation efficiency for some low-range values.
-</div>
+<strong>Cheap Quick Sort (< 10 stack-len):</strong> Quick sort, but it's not recursive. You just set a pivot once and apply bubble on both halves.<br>
+<em>Why have it at all:</em> Because surprisingly, it actually surpasses both bubble and k sort in operation efficiency for some low-range values.
 
-<div style="border-left: 4px solid #b03060; border-radius: 4px; color: black; background-color: #f8d7da; padding: 10px; margin-bottom: 10px;">
-	<strong>K Sort (> 9 stack-len):</strong> Insertion sort, but with some sorting while pushing values over to b. This pre-sorting only occurs within a certain stack-len specific range though. This creates a K-like shape in b and can be pushed back to a while finishing the sorting very efficiently.<br>
-</div>
+<strong>K Sort (> 9 stack-len):</strong> Insertion sort, but with some sorting while pushing values over to b. This pre-sorting only occurs within a certain stack-len specific range though. This creates a K-like shape in b and can be pushed back to a while finishing the sorting very efficiently.<br>
 
 ## Performance
 > These values are averages over many program calls with random numbers. Test the performance yourself with the /build/get_average.sh script.
 
 <div>
     <a href="https://plotly.com/~ottoottootto/1/?share_key=zNIWNRe4Pu1EGi9qCprv4x" target="_blank" title="Plot 1" style="display: block; text-align: center;"><img src="https://plotly.com/~ottoottootto/1.png?share_key=zNIWNRe4Pu1EGi9qCprv4x" alt="Plot 1" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plotly.com/404.png';" /></a>
-    <script data-plotly="ottoottootto:1" sharekey-plotly="zNIWNRe4Pu1EGi9qCprv4x" src="https://plotly.com/embed.js" async></script>
 </div>
 
 _click on the image to get an interactive graph_
