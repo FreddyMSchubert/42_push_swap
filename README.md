@@ -7,7 +7,7 @@
 
 > This project was created in compliance with the 42 norm, which means no ternary operators, no switches, no for loops, no in function comments, ... -> https://github.com/FreddyMSchubert/42_cursus/blob/main/en.norm.pdf
 
-![Kextreme GIF](https://raw.githubusercontent.com/FreddyMSchubert/42_push_swap/main/assets/readme_assets/kextreme.gif)
+![Kextreme gif](https://github.com/FreddyMSchubert/42_push_swap/blob/master/assets/readme_assets/kextreme.gif?raw=true)
 
 ## Subject
 
@@ -76,20 +76,20 @@ I started out implementing a bunch of algorithms and seeing how efficient they w
 
 ### Used Algorithms
 
-![Bubble GIF](https://raw.githubusercontent.com/FreddyMSchubert/42_push_swap/main/assets/readme_assets/bubble.gif)
-
 <strong>Bubble Sort (< 5 stack-len):</strong> If the current value is larger than the next, swap them, otherwise rotate the stack.<br>
 	<em>Problem:</em> Since the stacks wrap around, you will go in an infinite loop.<br>
 <em>Solution:</em> Just don't swap the elements if the element at index 0 is the one that will end up being at the very end of the sorted stack.
 
-![Cheakquick GIF](https://raw.githubusercontent.com/FreddyMSchubert/42_push_swap/main/assets/readme_assets/cheapquick.gif)
+![Bubble GIF](https://github.com/FreddyMSchubert/42_push_swap/blob/master/assets/readme_assets/bubble.gif?raw=true)
 
 <strong>Cheap Quick Sort (< 10 stack-len):</strong> Quick sort, but it's not recursive. You just set a pivot once and apply bubble on both halves.<br>
 <em>Why have it at all:</em> Because surprisingly, it actually surpasses both bubble and k sort in operation efficiency for some low-range values.
 
-![K GIF](https://raw.githubusercontent.com/FreddyMSchubert/42_push_swap/main/assets/readme_assets/k.gif)
+![Cheapquick GIF](https://github.com/FreddyMSchubert/42_push_swap/blob/master/assets/readme_assets/cheapquick.gif?raw=true)
 
-<strong>K Sort (> 9 stack-len):</strong> Insertion sort, but with some sorting while pushing values over to b. This pre-sorting only occurs within a certain stack-len specific range though. This creates a K-like shape in b and can be pushed back to a while finishing the sorting very efficiently.<br>
+<strong>K Sort (> 9 stack-len):</strong> Insertion sort, but with some sorting while pushing values over to b. This pre-sorting only occurs within a certain stack-len relative range though. This creates a K-like shape in b and can be pushed back to a while finishing the sorting very efficiently.<br>
+
+![K GIF](https://github.com/FreddyMSchubert/42_push_swap/blob/master/assets/readme_assets/k.gif?raw=true)
 
 ## Performance
 > These values are averages over many program calls with random numbers. Test the performance yourself with the /build/get_average.sh script.
