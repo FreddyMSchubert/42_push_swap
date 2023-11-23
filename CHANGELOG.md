@@ -1,7 +1,8 @@
 # push_swap by @fschuber Changelog
 
-### todo
-- make a nice and detailed readme
+### v1.0.1 - 23.11.23
+- since i cant retry handing it in yet and i wanna be done with the project i made a beautiful and colorful readme with graphs.
+- also updated the scripts a little
 
 ---
 
@@ -10,6 +11,8 @@
 - created stacks_number_input file which does an atoi while checking for valid int range. if outside of range, it exits program. made input management functions call this file.
 - made sure number larger than long range that wrap around to be within int range also get picked up as an error
 - removed fsanitize from makefile, last time i accidentally handed in the project with that flag still on
+
+---
 
 ### v0.2.1 - 21.11.23
 - started work on checker.
