@@ -1,5 +1,10 @@
 # push_swap by @fschuber Changelog
 
+### v1.0.2 - 27.11.23
+- back from holidays, final changes before hand in. restructuring of checker ex_line and makefile changes
+
+---
+
 ### v1.0.1 - 23.11.23
 - since i cant retry handing it in yet and i wanna be done with the project i made a beautiful and colorful readme with graphs.
 - also updated the scripts a little
