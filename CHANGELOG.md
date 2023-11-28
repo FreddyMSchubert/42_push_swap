@@ -1,5 +1,8 @@
 # push_swap by @fschuber Changelog
 
+### v1.0.3 - 28.11.23
+- some minor changes to input parsing, int error checking & main return value
+
 ### v1.0.2 - 27.11.23
 - back from holidays, final changes before hand in. restructuring of checker ex_line and makefile changes
 

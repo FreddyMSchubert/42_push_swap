@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:52:27 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 13:41:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/28 06:20:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int	main(int argc, char **argv)
 		if (VERBOSE == -1)
 			ft_printf("%d\n", stacks.operations);
 	}
-	return (1);
+	if (check_correctly_sorted_asc(stacks.a, stacks.height) == 0)
+		return (0);
+	else
+		return (1);
 }

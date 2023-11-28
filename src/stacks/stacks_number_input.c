@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 07:22:47 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/22 07:37:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/28 06:04:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_limits_atoi(const char *s, t_stacks	*stacks)
 	while (ft_isdigit(s[i]))
 	{
 		value = (value * 10) + s[i] - 48;
-		check_valid_range(value, stacks);
+		check_valid_range(value * sign, stacks);
 		i++;
 	}
 	return ((int)value * sign);

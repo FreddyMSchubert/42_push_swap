@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 08:45:09 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 13:37:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/28 06:22:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ int	check_argument_validity(char	**argv)
 	while (argv[word_selector] != NULL)
 	{
 		char_selector = 0;
+		if (argv[word_selector][0] == '\0')
+			return (0);
 		while (argv[word_selector][char_selector] != '\0')
 		{
-			if (!ft_isdigit(argv[word_selector][char_selector]) && \
-				!(argv[word_selector][char_selector] == '-'))
+			if ((!ft_isdigit(argv[word_selector][char_selector]) && \
+				!(argv[word_selector][char_selector] == '-')))
 				return (0);
 			char_selector++;
 		}
