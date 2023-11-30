@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 11:09:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:30:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	print_stacks(const t_stacks	*stacks)
 	}
 	if (VERBOSE == 1)
 	{
+		ft_printf("%d\n", stacks->height);
+		ft_printf("%d\n", stacks->a_height);
+		ft_printf("%d\n", stacks->b_height);
+		ft_printf("%d\n", stacks->operations);
 		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
 								stacks->b_height, stacks->operations);
 		ft_printf("\n");
@@ -49,6 +53,7 @@ void	free_stacks(t_stacks	*stacks)
 {
 	free(stacks->a);
 	free(stacks->b);
+	free(stacks->sorted);
 	if (VERBOSE == 1)
 		ft_printf("Freed stacks!\n");
 }

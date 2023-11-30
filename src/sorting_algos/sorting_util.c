@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:02:06 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/21 11:27:36 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:14:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_correctly_sorted_asc(t_stack_item	*stack, int height)
 	int	i;
 
 	i = 1;
-	while (i < height)
+	while (height > 1 && i < height)
 	{
 		if (stack[i].value < stack[i - 1].value)
 			return (0);

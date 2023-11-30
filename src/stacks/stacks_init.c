@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:54:15 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/22 07:33:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:52:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int	init_stacks_string(char	**argv, t_stacks	*stacks)
 	stacks->height = ft_arraylen((const void **)split_argv);
 	stacks->a = malloc (sizeof(t_stack_item) * stacks->height);
 	stacks->b = malloc (sizeof(t_stack_item) * stacks->height);
+	stacks->operations = 0;
 	if (!stacks->a || !stacks->b)
 		return (free(stacks->a), free(stacks->b), 0);
 	stacks->a_height = 0;
@@ -117,6 +118,7 @@ int	init_stacks_string(char	**argv, t_stacks	*stacks)
 		stacks->a_height++;
 	}
 	normal_bubble_sort(stacks);
+	ft_free_rec((void **)split_argv);
 	return (1);
 }
 

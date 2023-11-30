@@ -1,5 +1,13 @@
 # push_swap by @fschuber Changelog
 
+### v1.0.4 - 30.11.23
+- Valgrind memory leak grand fixage!
+	- main freeing logic fix
+	- stacks.operations not being initialized if input is in string format fix
+- makefile changes
+
+---
+
 ### v1.0.3 - 28.11.23
 - some minor changes to input parsing, int error checking & main return value
 
