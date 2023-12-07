@@ -1,5 +1,10 @@
 # push_swap by @fschuber Changelog
 
+### v1.0.6 - 7.12.23
+- last commit created a norminette error in limits_atoi. fixed that.
+
+---
+
 ### v1.0.5 - 6.12.23
 - some changes to stop makefile from relinking the submodules
 - error fix: - was being treated as a 0.
