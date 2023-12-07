@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 07:22:47 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/28 06:04:20 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:46:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ int	ft_limits_atoi(const char *s, t_stacks	*stacks)
 		i++;
 	if (!ft_isdigit(s[i]))
 	{
-		if (s[i] == '-')
+		if (s[i] == '-' && ft_isdigit(s[i + 1]))
 			sign = -sign;
-		if (s[i] == '-' || s[i] == '+')
+		if ((s[i] == '-' || s[i] == '+') && ft_isdigit(s[i + 1]))
 			i++;
+		else if (!ft_isdigit(s[i + 1]))
+			exit_error("A minus was inputted witout a value. Dont.\n", stacks);
 		else
 			return (0);
 	}

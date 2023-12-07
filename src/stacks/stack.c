@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:35:23 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/30 15:30:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:44:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,11 @@ void	print_stacks(const t_stacks	*stacks)
 		ft_printf(" [%d] \n", stacks->sorted[counter].value);
 	}
 	if (VERBOSE == 1)
-	{
-		ft_printf("%d\n", stacks->height);
-		ft_printf("%d\n", stacks->a_height);
-		ft_printf("%d\n", stacks->b_height);
-		ft_printf("%d\n", stacks->operations);
-		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n", stacks->a_height, \
-								stacks->b_height, stacks->operations);
-		ft_printf("\n");
-	}
+		ft_printf("%d\n%d\n%d\n%d\n", stacks->height, stacks->a_height, \
+										stacks->b_height, stacks->operations);
+	if (VERBOSE == 1)
+		ft_printf("  a    b    s - aH: %d, bH: %d, #: %d\n\n", \
+						stacks->a_height, stacks->b_height, stacks->operations);
 }
 
 // @brief	Frees everything allocated inside t_stacks

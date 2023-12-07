@@ -1,5 +1,13 @@
 # push_swap by @fschuber Changelog
 
+### v1.0.5 - 6.12.23
+- some changes to stop makefile from relinking the submodules
+- error fix: - was being treated as a 0.
+- changed get_average to get value by using wc -l.
+	- made largest and smallest values print on every execution to get a feeling for where the execution is going while running
+
+---
+
 ### v1.0.4 - 30.11.23
 - Valgrind memory leak grand fixage!
 	- main freeing logic fix

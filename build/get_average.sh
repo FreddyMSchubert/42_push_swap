@@ -13,8 +13,8 @@ largest=-99999999999999
 
 for (( i=0; i<number_of_executions; i++ ))
 do
-    operations=$(./run_push_swap.sh $number_of_parameters | tail -n 1)
-    printf "Operation %d returned %d operations\n" $((i+1)) $operations
+    operations=$(./run_push_swap.sh $number_of_parameters | wc -l)
+    printf "Largest so far: %d; Operation %d returned %d operations\n" $largest $((i+1)) $operations
     sum_operations=$((sum_operations + operations))
     if [ "$operations" -lt "$smallest" ]; then
         smallest=$operations

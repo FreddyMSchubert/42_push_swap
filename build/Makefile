@@ -8,30 +8,32 @@ FTGNL_DIR   := ../submodules/42_get_next_line
 SRC = $(shell find ../src -name "*.c")
 BSRC = $(shell find ../src_bonus -name "*.c")
 OBJ = $(SRC:.c=.o)
-BOBJ = $(BSRC:.c=.o)
+BOBJ = $(BSRC:.c=.o) $(filter-out ../src/main.o, $(OBJ))
 
 CFLAGS		:=	-Wall -Werror -Wextra \
-				-Wunreachable-code -Ofast -g # -fsanitize=address
+				#-Wunreachable-code -Ofast -g # -fsanitize=address
 HEADER		:=	-I../include/
 LIBS		:=	-L$(LIBFT_DIR) -lft \
 				-L$(FTPRINTF_DIR) -lftprintf \
 				-L$(FTGNL_DIR) -lftgnl
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT_DIR)/libft.a $(FTPRINTF_DIR)/ftprintf.a $(FTGNL_DIR)/ftgnl.a $(OBJ)
 	@cc $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
-$(BNAME): $(BOBJ)
-	@cc $(CFLAGS) $(filter-out ../src/main.o, $(SRC:.c=.o)) $(BOBJ) $(LIBS) -o $(BNAME)
+$(BNAME): $(LIBFT_DIR)/libft.a $(FTPRINTF_DIR)/ftprintf.a $(FTGNL_DIR)/ftgnl.a $(BOBJ)
+	@cc $(CFLAGS) $(BOBJ) $(LIBS) -o $(BNAME)
 %.o: %.c
 	@cc -c $< $(CFLAGS) $(HEADER) -o $@
 
-libft:
-	make comp -C $(LIBFT_DIR)
-ftprintf:
+$(LIBFT_DIR)/libft.a:
+	make -C $(LIBFT_DIR) comp
+
+$(FTPRINTF_DIR)/ftprintf.a:
 	make -C $(FTPRINTF_DIR)
-ftgnl:
+
+$(FTGNL_DIR)/ftgnl.a:
 	make -C $(FTGNL_DIR)
 
-all: libft ftprintf ftgnl $(NAME)
+all: $(NAME)
 bonus: $(BNAME)
 clean:
 	@rm -f $(OBJ) $(BOBJ)
@@ -51,12 +53,11 @@ comp:
 	@make clean
 	@clear
 fcomp:
-	@cd ../ && git submodule update --init --recursive
-	@cd ../submodules && norminette
+	@cd ../ && git submodule update --init --remote
 	@cd ../include && norminette
 	@cd ../src && norminette
 	@make re
 	@make clean
 	@clear
 
-.PHONY: all clean fclean re comp fcomp bonus libft ftprintf ftgnl
+.PHONY: all clean fclean re comp fcomp bonus

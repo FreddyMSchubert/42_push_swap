@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:58:40 by fschuber          #+#    #+#             */
-/*   Updated: 2023/11/30 14:57:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:49:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // will output detailed logging if set to 1, and normal logging but with 
 // operations count as last line if set to -1
-#define VERBOSE 1
+#define VERBOSE 0
 
 // defines at what length of substack to stop splitting and start sorting
 // (in quick sort)

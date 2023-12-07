@@ -1,0 +1,2 @@
+- input a - -> does it get understood as a 0?
+- use ../build/get_average.sh script to check definitively for the max value given a certain number of inputs
